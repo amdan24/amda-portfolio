@@ -6,7 +6,8 @@ import json, os, re, sys, html as _h
 HIER = os.path.dirname(os.path.abspath(__file__))
 VORLAGE = os.path.join(HIER, "vorlage")
 sys.path.insert(0, HIER)
-from lupe_svg import plan_svg, praxis_svg  # derselbe Gartenplan zweimal
+from lupe_svg import plan_svg, praxis_svg
+from sehen import JS_MOTIVE, seiten as sehen_seiten, ZITAT  # derselbe Gartenplan zweimal
 
 e = _h.escape
 def lies(p, base=VORLAGE):
@@ -51,10 +52,10 @@ PROJEKTE = [
       "Hier kommen die Scans hinein.", "Hier kommt der Gedanke dazu hinein.", ["Papier", "Tusche", "Linie"], True),
 ]
 
-STATIONEN = [dict(zeit=s["zeit"], titel=s["titel"], ort=s.get("ort", "")) for s in ns["STATIONEN"] if s.get("art") != "zukunft"][:10]
+STATIONEN = [dict(zeit=s["zeit"], titel=s["titel"], ort=s.get("ort", "")) for s in ns["STATIONEN"] if s.get("art") != "zukunft"]
 DATEN = dict(projekte=PROJEKTE, stationen=STATIONEN, blick=ns["BLICK"],
              staerken=[t for _, t in ns["STAERKEN"]], profil=ns["PROFIL"], status=ns["STATUS"], ort=ns["ORT"], mail=ns["MAIL"],
-             leidenschaft=ns["LEIDENSCHAFT"])
+             leidenschaft=ns["LEIDENSCHAFT"], digital=[t for _, t in ns["DIGITAL"]], zert_technik=ns["ZERT_TECHNIK"], zert_orga=ns["ZERT_ORGA"], sprachen=ns["SPRACHEN"])
 for _i, _p in enumerate(PROJEKTE, 1):
     _p["bild"] = f"bilder/projekt-{_i:02d}.jpg"
 schreibe("daten.js", "window.DATEN=" + json.dumps(DATEN, ensure_ascii=False) + ";\n")
@@ -69,6 +70,7 @@ css = css.replace("h1,h2,h3{font-weight:500;", "h1,h2,h3{font-family:var(--kopf)
 css = css.replace("opacity:.5}", "opacity:.3}", 1)
 css += """
 /* Prototyp-Ergänzungen */
+@media(max-width:760px){header.nav{flex-wrap:wrap;gap:6px 16px;padding:12px var(--gut)}header.nav nav{flex-wrap:wrap;gap:4px 14px}}
 header.nav{mix-blend-mode:normal;color:var(--tinte);background:rgba(246,245,242,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .tag{display:inline-block;font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:99px;background:var(--mint);color:var(--gruen-text)}
 .status{display:flex;width:fit-content;max-width:100%;align-items:center;gap:.6rem;padding:.45rem 1rem;border-radius:999px;background:var(--mint);font-size:.9rem;font-weight:600;color:var(--gruen-text)}
@@ -82,7 +84,7 @@ schreibe("style.css", css)
 js = lies("main.js")
 js = js.replace('const NAME = "Vorname Nachname"; // <- hier den echten Namen eintragen', 'const NAME = "Daniel Amon";')
 js = js.replace('[["portfolio.html","Portfolio"],["ueber-mich.html","Über mich"],["studio.html","Studio"],["kontakt.html","Kontakt"]]',
-                '[["portfolio.html","Portfolio"],["ueber-mich.html","Über mich"],["kontakt.html","Kontakt"]]')
+                '[["sehen.html","Sehen"],["portfolio.html","Arbeiten"],["werdegang.html","Werdegang"],["ueber-mich.html","Über mich"],["kontakt.html","Kontakt"]]')
 js = js.replace("Architektur · Kunst · Prozess", "Landschaft · Planung · Praxis").replace("hallo@deinname.com", "amondaniel@live.at")
 js = js.replace('<a href="kontakt.html">amondaniel@live.at</a></footer>', '<a href="kontakt.html">amondaniel@live.at</a><span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></span></footer>')
 js = js.replace('const PAL=["#e4572e","#2e6fe4","#f0b429","#1c1c1c","#2fa37a","#d94f9b"];',
@@ -133,6 +135,8 @@ function fillTiles(root=document){
 document.addEventListener("DOMContentLoaded",()=>fillTiles());
 '''
 js = js[:i] + neu
+js = js.replace("return kind===\"plan\"?planSVG(sd):kind===\"praxis\"?praxisSVG(sd):mixSVG(sd);", "return (KIND[kind]||mixSVG)(sd);")
+js += JS_MOTIVE
 schreibe("main.js", js)
 
 # ---------- gemeinsamer Seitenkopf ----------
@@ -186,12 +190,13 @@ hero_css = r'''
 .lupe-text .mono{position:relative;z-index:1;margin-bottom:1rem;color:var(--gruen-text)}
 .lupe-titel{position:relative;z-index:1;margin:0;font-size:clamp(2.6rem,7.4vw,6.4rem);line-height:.96;letter-spacing:-.04em;color:var(--tinte)}
 .lupe-titel-b{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:flex-end;padding:0 var(--rand) clamp(4rem,9vh,5.5rem);font-family:var(--hand);font-weight:400;font-size:clamp(3rem,8.6vw,7.2rem);line-height:.94;letter-spacing:0;color:#fff;clip-path:circle(var(--r) at var(--mx) var(--my))}
-.lupe-hinweis,.lupe-legende{position:absolute;top:84px;z-index:5;margin:0;padding:.5rem 1rem;border-radius:1.2rem;background:#fff;box-shadow:0 0 0 1.5px var(--line);font:400 1.05rem/1.25 var(--hand);color:var(--gruen-text);pointer-events:none}
+.lupe-hinweis,.lupe-legende{position:absolute;top:clamp(84px,14vh,110px);z-index:5;margin:0;padding:.5rem 1rem;border-radius:1.2rem;background:#fff;box-shadow:0 0 0 1.5px var(--line);font:400 1.05rem/1.25 var(--hand);color:var(--gruen-text);pointer-events:none}
 .lupe-hinweis{left:var(--gut)}
 .lupe-legende{right:var(--gut);text-align:right}
 .lupe-weiter{position:absolute;right:var(--gut);bottom:1.6rem;z-index:6;cursor:pointer;background:#fff}
 @media (hover:none){.lupe{cursor:auto}}
 @media (max-width:42rem){.lupe-hinweis{display:none}.lupe-legende{left:var(--gut);right:auto;text-align:left}.lupe-weiter{left:var(--gut);right:auto}.lupe-text,.lupe-titel-b{padding-bottom:5rem}}
+.zitat-s{margin:clamp(30px,5vw,60px) 0}.zitat-s blockquote{font-family:var(--kopf);font-weight:800;font-size:clamp(1.7rem,4.6vw,3.6rem);line-height:1.05;letter-spacing:-.035em;max-width:20em}.zitat-s figcaption{margin-top:16px}
 .intro-s{padding-bottom:0}
 .intro-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gut)}
 .intro-h{grid-column:1/8}
@@ -234,6 +239,15 @@ index_body = f'''<main>
     <div class="rv intro-t"><p class="lead" style="margin-bottom:24px">Ich studiere Landschaftsplanung und Landschaftsarchitektur an der BOKU Wien. Dazu kommen über zwanzig Jahre Berufspraxis in Technik, Handwerk, Handel, Büro und Betreuung.</p><p style="margin-bottom:24px"><span class="status">Suche Teilzeitstelle · 8 bis 12 Wochenstunden</span></p><a class="btn" href="portfolio.html">Portfolio <span class="arr">→</span></a></div>
   </div>
   <div class="wrap"><div class="zahlen" id="zahlen"></div></div>
+</section>
+<section>
+  <div class="wrap">
+    <div class="sec-head mono"><span>Wie ich sehe</span><span>Inspiration</span></div>
+    <div class="rule"></div>
+    <figure class="zitat-s rv"><blockquote>„{ZITAT[0]}“</blockquote><figcaption class="mono">{ZITAT[1]}</figcaption></figure>
+    <p class="lead rv" style="max-width:34em">Ich sehe in einem Graben Schafgarbe und Beifuß, wo andere nur Unkraut sehen. Auf dieser Seite sammle ich, was mir auffällt.</p><br>
+    <a class="btn" href="sehen.html">Zur Sammlung <span class="arr">→</span></a>
+  </div>
 </section>
 <section>
   <div class="wrap">
@@ -351,11 +365,11 @@ um_body = '''<main>
 </section>
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="sec-head mono"><span>03 / Werdegang</span><span>Auswahl aus dem Lebenslauf</span></div>
-    <div class="tl" id="tl"></div>
-    <br><h3 style="margin:30px 0 4px">Stärken aus der Praxis</h3>
-    <ul class="marken" id="staerken"></ul>
-    <br><br><a class="btn" href="kontakt.html">Kontakt aufnehmen <span class="arr">→</span></a>
+    <div class="sec-head mono"><span>03 / Weiter</span><span>Mehr von mir</span></div>
+    <div class="rule"></div><br>
+    <a class="btn" href="werdegang.html">Werdegang <span class="arr">→</span></a>&nbsp;
+    <a class="btn" href="sehen.html">Wie ich sehe <span class="arr">→</span></a>&nbsp;
+    <a class="btn" href="kontakt.html">Kontakt <span class="arr">→</span></a>
   </div>
 </section>
 </main>'''
@@ -364,8 +378,6 @@ morph_js = morph_js.replace("#e4572e", "#F6D44A").replace("#2e6fe4", "#3E8A4F")
 um_js = f'''<script>
 const D=window.DATEN;
 document.getElementById('profil').textContent=D.profil.split(". ")[0]+".";
-document.getElementById('tl').innerHTML=D.stationen.map(s=>`<div class="row rv"><span class="mono">${{s.zeit}}</span><b>${{s.titel}}</b><span class="mono">${{s.ort}}</span></div>`).join("");
-document.getElementById('staerken').innerHTML=D.staerken.map(t=>`<li>${{t}}</li>`).join("");
 {morph_js}
 </script>'''
 schreibe("ueber-mich.html", seite("Über mich · Daniel Amon", "Daniel Amon: Student der Landschaftsplanung, Praxis in Garten, Technik und Organisation.", um_css, um_body, um_js, datei="ueber-mich.html"))
@@ -391,6 +403,46 @@ k_body = '''<main>
 k_js = re.search(r"<script>(.*?)</script>", lies("kontakt.html").split("main.js")[1], re.S).group(0)
 k_js = k_js.replace("['#e4572e','#2e6fe4','#f0b429']", "['#1D6B37','#6BAF88','#F6D44A']")
 schreibe("kontakt.html", seite("Kontakt · Daniel Amon", "Kontakt zu Daniel Amon.", stil("kontakt.html"), k_body, k_js, datei="kontakt.html"))
+
+wd_body = """<main>
+<div class="wrap top">
+  <p class="mono">Werdegang</p>
+  <h1 class="display" style="margin:16px 0 20px">Vom Handwerk<br>zur Landschaft.</h1>
+  <p class="lead" id="profil"></p>
+</div>
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head mono"><span>01 / Stationen</span><span>Aus dem Lebenslauf</span></div>
+    <div class="tl" id="tl"></div>
+  </div>
+</section>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head mono"><span>02 / Können</span><span>Fähigkeiten und Zertifikate</span></div>
+    <div class="rule"></div>
+    <div class="spalten">
+      <div class="rv"><h3>Stärken aus der Praxis</h3><ul class="marken" id="staerken"></ul></div>
+      <div class="rv"><h3>Digitales und Kreatives</h3><ul class="marken" id="digital"></ul></div>
+      <div class="rv"><h3>Zertifikate</h3><ul class="marken" id="zert"></ul><h3 style="margin-top:26px">Sprachen</h3><p id="sprachen" style="margin-top:8px"></p></div>
+    </div>
+    <br><br><a class="btn" href="kontakt.html">Kontakt aufnehmen <span class="arr">→</span></a>
+  </div>
+</section>
+</main>"""
+wd_css = stil("ueber-mich.html").split(".pillars")[0] + ".top{padding-top:140px;padding-bottom:10px}.spalten{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2.4vw,40px);margin-top:30px}.spalten h3{font-size:1.3rem}@media(max-width:900px){.spalten{grid-template-columns:1fr}}"
+wd_js = """<script>
+const D=window.DATEN;
+document.getElementById('profil').textContent=D.profil.split(". ")[0]+".";
+document.getElementById('tl').innerHTML=D.stationen.map(s=>`<div class="row rv"><span class="mono">${s.zeit}</span><b>${s.titel}</b><span class="mono">${s.ort}</span></div>`).join("");
+const li=a=>a.map(t=>`<li>${t}</li>`).join("");
+document.getElementById('staerken').innerHTML=li(D.staerken);
+document.getElementById('digital').innerHTML=li(D.digital);
+document.getElementById('zert').innerHTML=li(D.zert_technik.concat(D.zert_orga));
+document.getElementById('sprachen').textContent=D.sprachen;
+</script>"""
+schreibe("werdegang.html", seite("Werdegang · Daniel Amon", "Werdegang von Daniel Amon: Stationen, Fähigkeiten und Zertifikate.", wd_css, wd_body, wd_js, "werdegang.html"))
+sehen_seiten(seite, schreibe, e, None)
+
 # ---------- Rechtliches, 404, robots, sitemap ----------
 recht_css = ".recht{max-width:46rem;padding:150px var(--gut) 90px;margin:0 auto}.recht h1{font-size:clamp(2.4rem,6vw,4rem);margin-bottom:30px}.recht h2{font-size:1.3rem;margin:34px 0 8px;letter-spacing:-.02em}.recht p{max-width:40em;opacity:.88}.recht a{text-decoration:underline}"
 impressum = """<div class="recht"><h1>Impressum</h1>
@@ -416,6 +468,6 @@ schreibe("impressum.html", seite("Impressum · Daniel Amon", "Impressum von Dani
 schreibe("datenschutz.html", seite("Datenschutz · Daniel Amon", "Datenschutzerklärung.", recht_css, "<main>" + datenschutz + "</main>", "", "datenschutz.html", nein))
 schreibe("404.html", seite("Seite nicht gefunden · Daniel Amon", "Diese Seite gibt es nicht.", recht_css + ".recht .btn{margin-top:30px}", '<main><div class="recht"><h1>Diese Seite gibt es nicht.</h1><p>Vielleicht hilft die Startseite weiter.</p><a class="btn" href="/">Zur Startseite <span class="arr">→</span></a></div></main>', "", "404.html", nein))
 schreibe("robots.txt", NL.join(["User-agent: *", "Allow: /", f"Sitemap: {DOMAIN}/sitemap.xml", ""]))
-urls = "".join(f"<url><loc>{DOMAIN}/{p}</loc></url>" + NL for p in ("", "portfolio.html", "ueber-mich.html", "kontakt.html"))
+urls = "".join(f"<url><loc>{DOMAIN}/{p}</loc></url>" + NL for p in ("", "sehen.html", "portfolio.html", "werdegang.html", "ueber-mich.html", "kontakt.html"))
 schreibe("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>' + NL + '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + NL + urls + "</urlset>" + NL)
 print("fertig:", ", ".join(sorted(f for f in os.listdir(HIER) if f.endswith((".html", ".css", ".js")))))

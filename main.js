@@ -1,6 +1,6 @@
 /* Gemeinsame Bausteine: Navigation, Footer, generierte Platzhalter-Kunst, Reveal */
 const NAME = "Daniel Amon";
-const PAGES = [["portfolio.html","Portfolio"],["ueber-mich.html","Über mich"],["kontakt.html","Kontakt"]];
+const PAGES = [["sehen.html","Sehen"],["portfolio.html","Arbeiten"],["werdegang.html","Werdegang"],["ueber-mich.html","Über mich"],["kontakt.html","Kontakt"]];
 (function(){
   const here = location.pathname.split("/").pop() || "index.html";
   document.body.insertAdjacentHTML("afterbegin",
@@ -48,7 +48,7 @@ function mixSVG(seed=1){
 }
 function artHTML(spec){
   const [kind,seed]=spec.split(":");const sd=+seed||1;
-  return kind==="plan"?planSVG(sd):kind==="praxis"?praxisSVG(sd):mixSVG(sd);
+  return (KIND[kind]||mixSVG)(sd);
 }
 function fillTiles(root=document){
   root.querySelectorAll("[data-art]").forEach(el=>{
@@ -58,3 +58,46 @@ function fillTiles(root=document){
   });
 }
 document.addEventListener("DOMContentLoaded",()=>fillTiles());
+
+/* Motive aus dem Alltagsblick (Platzhalter bis zu echten Fotos) */
+function wildSVG(seed=1,w=400,h=500){
+  const r=rng(seed+3);let s=`<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="${w}" height="${h}" fill="#CFC9A4"/><rect y="${h*.55}" width="${w}" height="${h*.45}" fill="#9C8F6A"/>`;
+  for(let i=0;i<26;i++){const x=r()*w,y=h*(.5+r()*.5),hh=60+r()*130,sw=(r()-.5)*50;s+=`<path d="M${x.toFixed(0)} ${y.toFixed(0)} q${(sw/2).toFixed(0)} ${(-hh/2).toFixed(0)} ${sw.toFixed(0)} ${(-hh).toFixed(0)}" fill="none" stroke="${["#5F7A3A","#7C9446","#A3A85A"][Math.floor(r()*3)]}" stroke-width="${(1.5+r()*2).toFixed(1)}" stroke-linecap="round"/>`}
+  for(let i=0;i<6;i++){const x=w*(.12+r()*.76),y=h*(.2+r()*.35);s+=`<path d="M${x.toFixed(0)} ${(y+h*.35).toFixed(0)} V${y.toFixed(0)}" stroke="#6B7A3A" stroke-width="2.4"/>`;for(let k=0;k<9;k++){const a=k/9*Math.PI*2;s+=`<circle cx="${(x+Math.cos(a)*14).toFixed(1)}" cy="${(y+Math.sin(a)*8).toFixed(1)}" r="7" fill="#F4EFDD"/>`}s+=`<circle cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="8" fill="#E9D98A"/>`}
+  for(let i=0;i<5;i++){const x=w*(.1+r()*.8),y=h*(.45+r()*.4);for(let k=0;k<5;k++)s+=`<path d="M${x.toFixed(0)} ${y.toFixed(0)} q${(-18+k*9)} -28 ${(-30+k*15)} -50" fill="none" stroke="#8FA08A" stroke-width="2.2" stroke-linecap="round"/>`}
+  return s+"</svg>";
+}
+function steinSVG(seed=1,w=400,h=500){
+  const r=rng(seed+5),C=["#A89F94","#8E857A","#C9B79C","#B5A58C","#7D766E","#D2C6B0","#9A7B5E"];
+  let s=`<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="${w}" height="${h}" fill="#B9B0A2"/>`;
+  for(let i=0;i<20;i++){const x=r()*w,y=r()*h,rx=22+r()*38,ry=rx*(.6+r()*.4),rot=r()*180,c=C[Math.floor(r()*C.length)];
+    s+=`<g transform="rotate(${rot.toFixed(0)} ${x.toFixed(0)} ${y.toFixed(0)})"><ellipse cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" rx="${rx.toFixed(0)}" ry="${ry.toFixed(0)}" fill="${c}" stroke="#4E4943" stroke-opacity=".5" stroke-width="1.4"/>`;
+    const n=2+Math.floor(r()*3);for(let k=0;k<n;k++){const o=(k-n/2)*ry*.35;s+=`<path d="M${(x-rx*.8).toFixed(0)} ${(y+o).toFixed(0)} q${(rx*.8).toFixed(0)} ${(r()*14-7).toFixed(0)} ${(rx*1.6).toFixed(0)} 0" fill="none" stroke="${r()>.5?"#F4EFE4":"#4E4943"}" stroke-opacity=".6" stroke-width="${(1+r()*2).toFixed(1)}"/>`}
+    s+=`</g>`}
+  return s+"</svg>";
+}
+function blattSVG(seed=1,w=400,h=500){
+  const r=rng(seed+9),cx=w/2,top=h*.1,bot=h*.9,g=["#4E7A32","#668F3C","#7BA24A"][seed%3];
+  let s=`<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="${w}" height="${h}" fill="#E8E2CB"/>`;
+  s+=`<path d="M${cx} ${bot} C ${w*.02} ${h*.65}, ${w*.05} ${h*.2}, ${cx} ${top} C ${w*.95} ${h*.2}, ${w*.98} ${h*.65}, ${cx} ${bot}Z" fill="${g}"/>`;
+  s+=`<path d="M${cx} ${bot} V${top}" stroke="#DDE8B8" stroke-width="5" stroke-linecap="round"/>`;
+  for(let i=1;i<=9;i++){const y=bot-(bot-top)*i/10,len=w*(.34-Math.abs(i-5)*.03);for(const d of [-1,1])s+=`<path d="M${cx} ${y.toFixed(0)} q${(d*len*.5).toFixed(0)} ${(-30-r()*10).toFixed(0)} ${(d*len).toFixed(0)} ${(-60-r()*12).toFixed(0)}" fill="none" stroke="#DDE8B8" stroke-opacity=".8" stroke-width="2.2" stroke-linecap="round"/>`}
+  return s+"</svg>";
+}
+function malSVG(seed=1,w=400,h=500){
+  const r=rng(seed+13),C=["#6E4B33","#B98B5E","#7C8C4E","#E8DCC0","#2E4A34","#9A6A4C"];
+  let s=`<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="${w}" height="${h}" fill="#EFE7D6"/>`;
+  for(let i=0;i<6;i++){const c=C[Math.floor(r()*C.length)];s+=`<rect x="${(r()*w*.7).toFixed(0)}" y="${(r()*h*.7).toFixed(0)}" width="${(60+r()*w*.5).toFixed(0)}" height="${(50+r()*h*.35).toFixed(0)}" rx="${(r()*20).toFixed(0)}" fill="${c}" fill-opacity="${(.5+r()*.45).toFixed(2)}" transform="rotate(${(r()*16-8).toFixed(0)} ${w/2} ${h/2})"/>`}
+  for(let i=0;i<5;i++){let d=`M${(r()*w).toFixed(0)} ${(r()*h).toFixed(0)}`;for(let k=0;k<3;k++)d+=` C${(r()*w).toFixed(0)} ${(r()*h).toFixed(0)} ${(r()*w).toFixed(0)} ${(r()*h).toFixed(0)} ${(r()*w).toFixed(0)} ${(r()*h).toFixed(0)}`;s+=`<path d="${d}" fill="none" stroke="#2A2118" stroke-width="${(1+r()*3).toFixed(1)}" stroke-linecap="round" opacity=".8"/>`}
+  return s+"</svg>";
+}
+function arrSVG(seed=1,w=400,h=500){
+  const r=rng(seed+17);
+  let s=`<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="${w}" height="${h}" fill="#CFC6B2"/>`;
+  for(let row=0;row<6;row++){let x=-(r()*40);while(x<w){const bw=70+r()*30;s+=`<rect x="${x.toFixed(0)}" y="${(row*h/9+h*.06).toFixed(0)}" width="${(bw-4).toFixed(0)}" height="${(h/9-5).toFixed(0)}" rx="3" fill="${["#A8503A","#B5603F","#94452F","#C27050"][Math.floor(r()*4)]}"/>`;x+=bw}}
+  s+=`<rect x="${w*.06}" y="${h*.66}" width="${w*.88}" height="${h*.1}" rx="3" fill="#8A6A44"/>`;
+  for(let k=0;k<14;k++)s+=`<path d="M${(w*.06+r()*w*.8).toFixed(0)} ${(h*.68+r()*h*.06).toFixed(0)} h${(30+r()*60).toFixed(0)}" stroke="#5E4529" stroke-opacity=".6" stroke-width="1.5"/>`;
+  s+=`<circle cx="${w*.3}" cy="${h*.62}" r="26" fill="#6BAF88"/><circle cx="${w*.34}" cy="${h*.58}" r="16" fill="#8FC395"/>`;
+  return s+"</svg>";
+}
+const KIND={plan:planSVG,praxis:praxisSVG,mix:mixSVG,wild:wildSVG,stein:steinSVG,blatt:blattSVG,mal:malSVG,arr:arrSVG};

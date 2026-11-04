@@ -29,12 +29,13 @@
 .lupe-text .mono{position:relative;z-index:1;margin-bottom:1rem;color:var(--gruen-text)}
 .lupe-titel{position:relative;z-index:1;margin:0;font-size:clamp(2.6rem,7.4vw,6.4rem);line-height:.96;letter-spacing:-.04em;color:var(--tinte)}
 .lupe-titel-b{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:flex-end;padding:0 var(--rand) clamp(4rem,9vh,5.5rem);font-family:var(--hand);font-weight:400;font-size:clamp(3rem,8.6vw,7.2rem);line-height:.94;letter-spacing:0;color:#fff;clip-path:circle(var(--r) at var(--mx) var(--my))}
-.lupe-hinweis,.lupe-legende{position:absolute;top:84px;z-index:5;margin:0;padding:.5rem 1rem;border-radius:1.2rem;background:#fff;box-shadow:0 0 0 1.5px var(--line);font:400 1.05rem/1.25 var(--hand);color:var(--gruen-text);pointer-events:none}
+.lupe-hinweis,.lupe-legende{position:absolute;top:clamp(84px,14vh,110px);z-index:5;margin:0;padding:.5rem 1rem;border-radius:1.2rem;background:#fff;box-shadow:0 0 0 1.5px var(--line);font:400 1.05rem/1.25 var(--hand);color:var(--gruen-text);pointer-events:none}
 .lupe-hinweis{left:var(--gut)}
 .lupe-legende{right:var(--gut);text-align:right}
 .lupe-weiter{position:absolute;right:var(--gut);bottom:1.6rem;z-index:6;cursor:pointer;background:#fff}
 @media (hover:none){.lupe{cursor:auto}}
 @media (max-width:42rem){.lupe-hinweis{display:none}.lupe-legende{left:var(--gut);right:auto;text-align:left}.lupe-weiter{left:var(--gut);right:auto}.lupe-text,.lupe-titel-b{padding-bottom:5rem}}
+.zitat-s{margin:clamp(30px,5vw,60px) 0}.zitat-s blockquote{font-family:var(--kopf);font-weight:800;font-size:clamp(1.7rem,4.6vw,3.6rem);line-height:1.05;letter-spacing:-.035em;max-width:20em}.zitat-s figcaption{margin-top:16px}
 .intro-s{padding-bottom:0}
 .intro-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gut)}
 .intro-h{grid-column:1/8}
@@ -79,6 +80,15 @@
     <div class="rv intro-t"><p class="lead" style="margin-bottom:24px">Ich studiere Landschaftsplanung und Landschaftsarchitektur an der BOKU Wien. Dazu kommen über zwanzig Jahre Berufspraxis in Technik, Handwerk, Handel, Büro und Betreuung.</p><p style="margin-bottom:24px"><span class="status">Suche Teilzeitstelle · 8 bis 12 Wochenstunden</span></p><a class="btn" href="portfolio.html">Portfolio <span class="arr">→</span></a></div>
   </div>
   <div class="wrap"><div class="zahlen" id="zahlen"></div></div>
+</section>
+<section>
+  <div class="wrap">
+    <div class="sec-head mono"><span>Wie ich sehe</span><span>Inspiration</span></div>
+    <div class="rule"></div>
+    <figure class="zitat-s rv"><blockquote>„Kunst gibt nicht das Sichtbare wieder, sondern macht sichtbar.“</blockquote><figcaption class="mono">Paul Klee</figcaption></figure>
+    <p class="lead rv" style="max-width:34em">Ich sehe in einem Graben Schafgarbe und Beifuß, wo andere nur Unkraut sehen. Auf dieser Seite sammle ich, was mir auffällt.</p><br>
+    <a class="btn" href="sehen.html">Zur Sammlung <span class="arr">→</span></a>
+  </div>
 </section>
 <section>
   <div class="wrap">

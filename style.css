@@ -50,6 +50,7 @@ footer.foot{border-top:1px solid var(--ink);padding:28px var(--gut);display:flex
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.rule{transform:none}}
 
 /* Prototyp-Ergänzungen */
+@media(max-width:760px){header.nav{flex-wrap:wrap;gap:6px 16px;padding:12px var(--gut)}header.nav nav{flex-wrap:wrap;gap:4px 14px}}
 header.nav{mix-blend-mode:normal;color:var(--tinte);background:rgba(246,245,242,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .tag{display:inline-block;font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:99px;background:var(--mint);color:var(--gruen-text)}
 .status{display:flex;width:fit-content;max-width:100%;align-items:center;gap:.6rem;padding:.45rem 1rem;border-radius:999px;background:var(--mint);font-size:.9rem;font-weight:600;color:var(--gruen-text)}

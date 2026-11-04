@@ -83,11 +83,11 @@ input[type=range]{width:100%;margin:20px 0 6px;accent-color:var(--acc1)}
 </section>
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="sec-head mono"><span>03 / Werdegang</span><span>Auswahl aus dem Lebenslauf</span></div>
-    <div class="tl" id="tl"></div>
-    <br><h3 style="margin:30px 0 4px">Stärken aus der Praxis</h3>
-    <ul class="marken" id="staerken"></ul>
-    <br><br><a class="btn" href="kontakt.html">Kontakt aufnehmen <span class="arr">→</span></a>
+    <div class="sec-head mono"><span>03 / Weiter</span><span>Mehr von mir</span></div>
+    <div class="rule"></div><br>
+    <a class="btn" href="werdegang.html">Werdegang <span class="arr">→</span></a>&nbsp;
+    <a class="btn" href="sehen.html">Wie ich sehe <span class="arr">→</span></a>&nbsp;
+    <a class="btn" href="kontakt.html">Kontakt <span class="arr">→</span></a>
   </div>
 </section>
 </main>
@@ -96,8 +96,6 @@ input[type=range]{width:100%;margin:20px 0 6px;accent-color:var(--acc1)}
 <script>
 const D=window.DATEN;
 document.getElementById('profil').textContent=D.profil.split(". ")[0]+".";
-document.getElementById('tl').innerHTML=D.stationen.map(s=>`<div class="row rv"><span class="mono">${s.zeit}</span><b>${s.titel}</b><span class="mono">${s.ort}</span></div>`).join("");
-document.getElementById('staerken').innerHTML=D.staerken.map(t=>`<li>${t}</li>`).join("");
 
 /* Raster-zu-Geste-Morphing: ein Linienfeld, das mit dem Regler "wackelt" */
 const cv=document.getElementById('cv'),rg=document.getElementById('rg');

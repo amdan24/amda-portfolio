@@ -409,5 +409,55 @@
   "Im eigenen Garten verbinde ich Gestaltung, Beobachtung und praktische Arbeit: Ich plane Beete, pflege Gehölze, vermehre Pflanzen, arbeite mit vorhandenen Materialien und entwickle Lösungen im Laufe der Jahreszeiten weiter. Ob eine Pflanze am richtigen Standort gedeiht, zeigt sich oft erst nach einer Saison — genau diese Beobachtung und Weiterentwicklung machen für mich den Reiz aus.",
   "Auch in den Gärten von Freund:innen helfe ich gerne bei Schnitt, Pflege und praktischen Arbeiten. Dabei lerne ich unterschiedliche Böden, Standorte und Gestaltungsansätze kennen.",
   "Diese Neugier bringe ich auch in den Weinberg direkt vor meiner Haustür mit. Dort beobachte ich, wie Landschaft, Pflanzen und Standorte sich über das Jahr verändern. Aus dieser Erfahrung ist der Wunsch entstanden, Landschaft und Pflanzen beruflich zu verstehen, zu gestalten und zu planen."
- ]
+ ],
+ "DIGITAL": [
+  [
+   "qgis",
+   "QGIS · Grundlagen im systematischen Aufbau"
+  ],
+  [
+   "cad",
+   "CAD · Trumpf TruTube, Zeichnen und Konstruktion"
+  ],
+  [
+   "grafik",
+   "Bildbearbeitung und Grafik · GIMP, Inkscape, Canva"
+  ],
+  [
+   "office",
+   "Büro- und ERP-Systeme · Microsoft Office, SAP, BizSoft"
+  ],
+  [
+   "versand",
+   "Versandabwicklung · GLS-Etikettendrucker und Etikettenportal"
+  ],
+  [
+   "web",
+   "Web und digitale Prozesse · HTML, CSS, Cloudflare, KI-gestützte Workflows"
+  ],
+  [
+   "ki",
+   "KI-Kompetenzen · Claude, ChatGPT, Gemini, Grok, Ideogram, Higgsfield, KI-Agenten; IBM SkillsBuild AI Literacy Badge 2026"
+  ]
+ ],
+ "ZERT_TECHNIK": [
+  "Kranschein",
+  "Staplerschein",
+  "Führerschein B",
+  "KNX-Zertifizierung",
+  "Schweißzertifikat MIG/MAG",
+  "Trumpf Laserschutzschulung",
+  "Trumpf Laserprogrammierschulung"
+ ],
+ "ZERT_ORGA": [
+  "Erste-Hilfe-Kurs",
+  "Nachwuchsführungskräftelehrgang",
+  "Betriebsorganisationsseminar",
+  "TOP-Verkäufer-Prüfung",
+  "Arbeitsrecht-Schulung",
+  "SAP-Schulung",
+  "HACCP-Zertifikat",
+  "Erste Hilfe für psychische Krisen (pro mente Akademie, 12 Std.)"
+ ],
+ "SPRACHEN": "Deutsch (Muttersprache), Englisch (B2)"
 }
