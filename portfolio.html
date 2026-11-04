@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Arbeiten · Daniel Amon</title>
+<meta name="description" content="Arbeiten von Daniel Amon: Planung, Praxis, Digitales und Prozess.">
+<meta name="theme-color" content="#f6f5f2">
+<link rel="canonical" href="https://amda.work/portfolio.html">
+<meta property="og:title" content="Arbeiten · Daniel Amon">
+<meta property="og:description" content="Arbeiten von Daniel Amon: Planung, Praxis, Digitales und Prozess.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://amda.work/portfolio.html">
+<meta property="og:locale" content="de_AT">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="schriften.css">
+<link rel="stylesheet" href="style.css">
+<style>
+.top{padding-top:140px;padding-bottom:30px}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin:36px 0 10px}
+.f{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;padding:10px 18px;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer;transition:all .3s}
+.f:hover{border-color:var(--ink)}
+.f.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(12px,2vw,28px);margin-top:30px}
+.card{grid-column:span 4;cursor:pointer;transition:opacity .5s,transform .7s cubic-bezier(.2,.7,.2,1);position:relative}
+.card:nth-child(5n+2){grid-column:span 5;margin-top:5vw}
+.card:nth-child(5n+3){grid-column:span 3}
+.card:nth-child(5n+4){grid-column:span 3}
+.card:nth-child(5n){grid-column:span 5;margin-top:-3vw}
+.card .tile{aspect-ratio:4/5}
+.card:nth-child(5n+2) .tile{aspect-ratio:1}
+.card .tile>*{transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.card:hover .tile>*{transform:scale(1.07) rotate(.6deg)}
+.card .meta{display:flex;justify-content:space-between;padding-top:10px}
+.card .meta b{font-weight:500;letter-spacing:-.01em}
+.card.hide{display:none}
+@media(max-width:800px){.card,.card:nth-child(n){grid-column:span 6;margin-top:0}}
+@media(max-width:500px){.card,.card:nth-child(n){grid-column:1/-1}}
+/* Projekt-Ansicht */
+.case{position:fixed;inset:0;z-index:80;background:var(--bg);overflow-y:auto;transform:translateY(100%);transition:transform .8s cubic-bezier(.7,0,.2,1)}
+.case.open{transform:none}
+.case .bar{position:sticky;top:0;display:flex;justify-content:space-between;padding:18px var(--gut);background:var(--bg);border-bottom:1px solid var(--ink);z-index:2}
+.case .bar button{background:none;border:0;font:inherit;cursor:pointer;color:var(--ink)}
+.steps{display:grid;gap:clamp(60px,9vw,130px);padding:clamp(40px,6vw,90px) var(--gut)}
+.step{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(12px,2vw,28px);align-items:start}
+.step .n{grid-column:1/4;position:sticky;top:90px}
+.step .n b{font-size:clamp(3rem,8vw,7rem);font-weight:500;letter-spacing:-.05em;line-height:1;display:block}
+.step .m{grid-column:4/13}
+.step .m .tile{aspect-ratio:16/10;margin-bottom:16px}
+@media(max-width:800px){.step .n,.step .m{grid-column:1/-1;position:static}}
+.making{margin:0 var(--gut) 80px;border:1px solid var(--ink);padding:26px;display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.play{width:64px;height:64px;border-radius:50%;border:1px solid var(--ink);display:grid;place-items:center;flex:none}
+.play::after{content:"";border-left:14px solid var(--ink);border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px}
+</style>
+</head>
+<body>
+<main>
+<div class="wrap top">
+  <p class="mono">Portfolio · <span id="count"></span> Arbeiten · Prototyp</p>
+  <h1 class="display" style="margin-top:18px">Arbeiten</h1>
+  <div class="filters" id="filters">
+    <button class="f on" data-f="all">Alle</button>
+    <button class="f" data-f="Planung">Planung</button>
+    <button class="f" data-f="Praxis">Praxis</button>
+    <button class="f" data-f="Digital">Digital</button>
+    <button class="f" data-f="Prozess">Prozess</button>
+  </div>
+  <div class="rule"></div>
+  <div class="grid" id="grid"></div>
+</div>
+<div style="height:100px"></div>
+</main>
+<div class="case" id="case" aria-hidden="true">
+  <div class="bar mono"><span id="caseTitle"></span><button id="closeCase">Schließen ✕</button></div>
+  <div class="steps" id="steps"></div>
+  <div class="making"><div class="play"></div><div><p class="mono">Fotos und Making-of</p><p style="max-width:34em">Platzhalter: hier kommen Fotos vom Bau, Pläne und ein kurzes Video hinein.</p></div></div>
+</div>
+<script src="daten.js"></script>
+<script src="main.js"></script>
+<script>
+const P=window.DATEN.projekte;
+const g=document.getElementById('grid');
+g.innerHTML=P.map((p,i)=>`<div class="card rv" data-c="${p.c}" data-i="${i}"><div class="tile" data-art="${p.a}" data-bild="${p.bild}"></div><div class="meta"><b>${p.t}</b><span class="mono">${p.c} · ${p.y}</span></div></div>`).join("");
+fillTiles(g);
+document.getElementById('count').textContent=P.length;
+document.querySelectorAll('.rv').forEach(el=>el.classList.add('in'));
+document.getElementById('filters').addEventListener('click',e=>{
+  const b=e.target.closest('.f');if(!b)return;
+  document.querySelectorAll('.f').forEach(x=>x.classList.toggle('on',x===b));
+  const f=b.dataset.f;
+  g.querySelectorAll('.card').forEach(c=>c.classList.toggle('hide',!(f==='all'||c.dataset.c===f)));
+});
+const cs=document.getElementById('case');
+const PH="Platzhalter: Text folgt.";
+g.addEventListener('click',e=>{
+  const c=e.target.closest('.card');if(!c)return;
+  const p=P[+c.dataset.i];
+  document.getElementById('caseTitle').textContent=p.t+" · "+p.c+" · "+p.y;
+  const lab=[["01","Ausgangslage",p.lage||PH],["02","Vorgehen",p.tat||PH],["03","Ergebnis",p.ergebnis||PH]];
+  const [k,s]=p.a.split(":");const sd=+s;
+  const tiles=["plan:"+sd,"mix:"+sd,"praxis:"+sd];
+  document.getElementById('steps').innerHTML=
+   `<div><p class="mono">${p.c}${p.ph?' · <span class="tag">Platzhalter</span>':''}</p><h2 class="display" style="margin:12px 0;font-size:clamp(2.4rem,7vw,6rem)">${p.t}</h2>${p.kurz?`<p class="lead">${p.kurz}</p>`:''}${p.tools.length?`<ul class="marken">${p.tools.map(t=>`<li>${t}</li>`).join("")}</ul>`:''}</div>`+
+   lab.map((l,i)=>`<div class="step"><div class="n"><b>${l[0]}</b><p class="mono">${l[1]}</p></div><div class="m"><div class="tile" data-art="${tiles[i]}"${i===2?` data-bild="${p.bild}"`:""}></div><p class="body">${l[2]}</p></div></div>`).join("");
+  fillTiles(document.getElementById('steps'));
+  cs.classList.add('open');cs.scrollTop=0;cs.setAttribute('aria-hidden','false');
+});
+function closeCase(){cs.classList.remove('open');cs.setAttribute('aria-hidden','true')}
+document.getElementById('closeCase').onclick=closeCase;
+addEventListener('keydown',e=>{if(e.key==='Escape')closeCase()});
+</script>
+</body>
+</html>

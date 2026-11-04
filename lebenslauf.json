@@ -1,0 +1,413 @@
+{
+ "PROJEKTE": [
+  {
+   "titel": "Eigenes Betriebssystem für Geldflüsse und Buchhaltung",
+   "bereich": "beruflich",
+   "kurz": "Mit KI-Unterstützung entwickelte Anwendung für Finanzen und Abläufe der Selbstständigkeit",
+   "skills": "ki web organisation",
+   "lage": "Mehrere Shops und Einnahmequellen erfordern eine gemeinsame, übersichtliche Verwaltung von Geldflüssen und Buchhaltung.",
+   "tat": "Entwickelte mit KI-Unterstützung eine eigene Desktop-Anwendung zur Verwaltung von Geschäftsbereichen und Geldflüssen. Die Anwendung verbindet Etsy und Printify, erstellt Rechnungen nach österreichischen Anforderungen und erzeugt Monatsberichte aus einem zentralen Buchungsjournal.",
+   "ergebnis": "Die Anwendung wird in der eigenen Selbstständigkeit eingesetzt, schafft Transparenz über mehrere Geschäftsbereiche und wird kontinuierlich weiterentwickelt.",
+   "werkzeuge": [
+    "Python",
+    "React",
+    "PostgreSQL",
+    "KI-Entwicklung",
+    "Buchhaltung"
+   ]
+  },
+  {
+   "titel": "Selbstständigkeit mit mehreren Standbeinen",
+   "bereich": "beruflich",
+   "agentur": true,
+   "kurz": "Print-on-Demand, digitale Produkte, Social Media und Websites für Kleinbetriebe",
+   "skills": "organisation ki grafik web",
+   "lage": "Eine Selbstständigkeit mit nur einem Standbein ist stark von einzelnen Kanälen abhängig.",
+   "tat": "Konzipierte und baute mehrere sich ergänzende Einkommens- und Vertriebswege auf: Produkte, Reichweite und Dienstleistungen.",
+   "ergebnis": "Es entstand ein diversifiziertes Angebot mit mehreren Vertriebskanälen und digitalen Geschäftsbereichen.",
+   "bausteine": [
+    [
+     "Print-on-Demand-Shops",
+     "Laufend",
+     "Entwickle eigene Designs und Vermarktungskonzepte, organisiere Druck und Versand über externe Dienstleister und betreue die Shops laufend, ohne Lagerhaltung und Vorfinanzierung."
+    ],
+    [
+     "Digitale Produkte",
+     "Laufend",
+     "Entwickle, gestalte und biete digitale Produkte online an."
+    ],
+    [
+     "Social Media und Reichweite",
+     "Laufend",
+     "Baue Kanäle auf und betreue sie redaktionell. Plane, gestalte und veröffentliche Inhalte teilweise automatisiert und lenke Besucher gezielt auf die eigenen Shops."
+    ],
+    [
+     "Websites für Kleinbetriebe",
+     "Im Aufbau",
+     "Entwickle Vorlagen und ein Bauprogramm, das aus Texten und Fotos fertige Webseiten erstellt, samt Vorlagen für Impressum und Datenschutz. Baue Verkaufsseite und Hosting derzeit weiter aus."
+    ]
+   ],
+   "werkzeuge": [
+    "Geschäftsplanung",
+    "Canva",
+    "GIMP",
+    "Inkscape",
+    "HTML & CSS",
+    "Cloudflare",
+    "KI-Werkzeuge"
+   ]
+  },
+  {
+   "titel": "GIS-Portfolio mit QGIS",
+   "bereich": "fachlich",
+   "status": "Im Aufbau",
+   "kurz": "Eigenes Portfolio mit Fragestellungen auf Basis öffentlicher Daten",
+   "skills": "qgis",
+   "tat": "Baue ein fachliches GIS-Portfolio auf, in dem ich Fragestellungen zu Raum, Landschaft und Umwelt mit öffentlichen Geodaten bearbeite. Erarbeite dazu Karten, Auswertungen und kurze fachliche Berichte. Die ersten Fragestellungen sind in Vorbereitung.",
+   "werkzeuge": [
+    "QGIS",
+    "Öffentliche Geodaten",
+    "Kartengestaltung"
+   ]
+  },
+  {
+   "titel": "Gartengestaltung und Bau im eigenen Garten",
+   "bereich": "privat",
+   "kurz": "Mein privater Garten als Herzensprojekt: Gestaltung, Pflege und Eigenbau, im ständigen Wandel",
+   "skills": "garten technik",
+   "lage": "Der eigene Garten dient als kontinuierliches Praxisprojekt für Gestaltung, Pflege, Bau und ökologisches Lernen.",
+   "tat": "Gestalte und pflege den Garten dauerhaft, inklusive Gehölzschnitt an Bäumen, Sträuchern und Hecken sowie Rasenpflege. Setze Bauvorhaben in Eigenleistung um, unter anderem Holzbearbeitung, Erdarbeiten, Materialtransport und das Verlegen von Steinen.",
+   "ergebnis": "Es entstanden ressourcenschonende, dauerhaft nutzbare Anlagen aus überwiegend vorhandenen Materialien.",
+   "bausteine": [
+    [
+     "Hochbeete",
+     "",
+     "Plante und baute zwei Hochbeete mit unterschiedlichen Bauweisen: eines aus alten Lehmziegeln, eines aus alten Holzbalken."
+    ],
+    [
+     "Pflasterarbeiten",
+     "",
+     "Verlegte alte Ziegelsteine im Sandbett als Pflaster und befestigte damit Wege und Aufenthaltsflächen."
+    ],
+    [
+     "Gartenbeleuchtung",
+     "",
+     "Plante und installierte eine 12-Volt-LED-Beleuchtung mit individuell gestalteten Lampenschirmen aus Tontöpfen."
+    ]
+   ],
+   "werkzeuge": [
+    "Gartengestaltung",
+    "Gehölzschnitt",
+    "Rasenpflege",
+    "Holzbearbeitung",
+    "Erdarbeiten",
+    "Mauer- und Pflasterarbeiten",
+    "12-Volt-Elektrik",
+    "Motorsäge"
+   ]
+  },
+  {
+   "titel": "Obst-, Gemüse- und Kräuteranbau",
+   "bereich": "privat",
+   "kurz": "Kultivierung von Obst, Gemüse und Kräutern mit eigener Weiterverarbeitung",
+   "skills": "garten",
+   "tat": "Kultiviere Obst und Gemüse im eigenen Garten, legte einen Kräutergarten an und pflege ihn. Verarbeite Kräuter zu Hustensaft, Kräutersalz und Tees.",
+   "ergebnis": "Praktische Erfahrung entlang der gesamten Kette: von Anbau und Pflege bis zur Weiterverarbeitung.",
+   "werkzeuge": [
+    "Pflanzenkultivierung",
+    "Kräutergarten",
+    "Lebensmittelverarbeitung"
+   ]
+  }
+ ],
+ "STATIONEN": [
+  {
+   "zeit": "ab sofort",
+   "titel": "Praktische Mitarbeit mit Fachbezug",
+   "ort": "Hier könnte Ihr Unternehmen stehen",
+   "text": "Mitarbeit im Ausmaß von 8 bis 12 Wochenstunden mit dem Ziel, Studienwissen praktisch anzuwenden, fachliche Erfahrung aufzubauen und die Planungs- und Grünraumpraxis kennenzulernen …",
+   "art": "zukunft"
+  },
+  {
+   "zeit": "01/2026 – heute",
+   "titel": "Student Landschaftsplanung / Landschaftsarchitektur",
+   "ort": "Universität für Bodenkultur | Wien",
+   "text": "Vertiefe Landschaftsplanung, Naturschutzplanung sowie Vegetations- und Landschaftsökologie; entwickle Kenntnisse in zeichnerischer Darstellung, Planungsmethodik sowie Boden- und Klimakunde und baue Grundlagen in GIS und CAD auf.",
+   "mehr_titel": "Lehrveranstaltungen",
+   "gruppen": [
+    [
+     "Wintersemester 2026/27",
+     [
+      "Darstellungsmethoden und freies Zeichnen",
+      "Geologie, Klimatologie und Bodenkunde",
+      "Humanökologie",
+      "Einführung in Büroorganisation, Projektabwicklung und Ausschreibungssoftware",
+      "Landscape Theories and Landscape Planning",
+      "Planungstheorie und Planungsmethodik"
+     ]
+    ],
+    [
+     "Sommersemester 2026, abgeschlossen",
+     [
+      "Einführung in Landschaftsarchitektur und Landschaftsbau",
+      "Einführung in Landschaftsplanung und Naturschutzplanung",
+      "Grundlagen der Land- und Forstwirtschaft",
+      "Grundlagen des Rechts",
+      "Naturschutzplanung und Landschaftspflege",
+      "Orientierungslehrveranstaltung",
+      "Systematik und Ökologie der Pflanzen",
+      "Tierökologie, Landschaftsökologie, Hydrobiologie",
+      "Vegetationsökologie für Landschaftsplanung"
+     ]
+    ],
+    [
+     "Praxis",
+     [
+      "Exkursion zu Land- und Forstwirtschaft mit ersten Einblicken in die Biotopkartierung"
+     ]
+    ]
+   ],
+   "art": "ausbildung",
+   "skills": "qgis cad garten",
+   "stern": true,
+   "aktuell": true
+  },
+  {
+   "zeit": "06/2024 – heute",
+   "titel": "Freier Dienstnehmer auf Honorarbasis",
+   "ort": "Verein gegen Wohnungslosigkeit | Krems an der Donau",
+   "text": "Begleite und aktiviere Bewohner:innen im Alltag und in Gruppenangeboten, konzipiere Freizeitaktivitäten und Ausflüge und dokumentiere Dienste sorgfältig.",
+   "mehr": [
+    "Begleite und aktiviere Bewohner:innen seit über zwei Jahren im Alltag und in gruppenbezogenen Angeboten",
+    "Konzipiere und organisiere Freizeitaktivitäten und Ausflüge zur Förderung sozialer Teilhabe",
+    "Betreue Gruppen mit 1 bis 12 Personen und passe Aktivitäten an Interessen, Fähigkeiten und Möglichkeiten an",
+    "Motiviere zur Teilnahme an gemeinsamen Spielen, Mahlzeiten und Unternehmungen",
+    "Übernehme Verantwortung für einen respektvollen, sicheren und strukturierten Tagesablauf",
+    "Dokumentiere Dienste sorgfältig und wirke konstruktiv in Teambesprechungen mit"
+   ],
+   "art": "arbeit",
+   "skills": "organisation fuehrung doku office",
+   "aktuell": true
+  },
+  {
+   "zeit": "10/2025 – heute",
+   "titel": "Selbstständig: Print-on-Demand, digitale Produkte und Online-Projekte",
+   "ort": "Freies Gewerbe",
+   "text": "Konzipiere und betreue eigene Print-on-Demand-Shops, baue Social-Media-Kanäle auf, entwickle digitale Produkte und eine eigene Software für Geschäftsbereiche, Geldflüsse und Buchhaltung.",
+   "mehr": [
+    "Konzipiere und betreue eigene Print-on-Demand-Shops inklusive Design, Produktseiten und Online-Auftritt",
+    "Baue Social-Media-Kanäle auf und entwickle redaktionelle Inhalte zur Reichweitensteigerung",
+    "Entwickle digitale Produkte und digitale Geschäftsprozesse",
+    "Entwickelte eine eigene Software zur Verwaltung von Geschäftsbereichen, Geldflüssen, Rechnungen und Buchhaltungsabläufen"
+   ],
+   "art": "eigenes",
+   "skills": "ki grafik",
+   "aktuell": true
+  },
+  {
+   "zeit": "02/2025 – 08/2025",
+   "titel": "Persönliche Assistenz",
+   "ort": "WAG Assistenzgenossenschaft | Hadersdorf am Kamp",
+   "text": "Begleitete Menschen im beruflichen und alltäglichen Umfeld und unterstützte bei organisatorischen und administrativen Aufgaben.",
+   "mehr": [
+    "Begleitete Menschen im beruflichen und alltäglichen Umfeld",
+    "Unterstützte bei organisatorischen und administrativen Aufgaben",
+    "Trug zu einem selbstbestimmten, strukturierten und verlässlichen Arbeitsalltag bei"
+   ],
+   "art": "arbeit",
+   "skills": "organisation fuehrung office"
+  },
+  {
+   "zeit": "08/2024 – 12/2024",
+   "titel": "Assistenz der Geschäftsführung",
+   "ort": "Brandner Hygiene | Droß",
+   "text": "Bearbeitete Aufträge, Bestellungen, Lieferscheine und Rechnungen in BizSoft, koordinierte die Versandvorbereitung und pflegte Kundenkommunikation und interne Unterlagen.",
+   "mehr": [
+    "Bearbeitete Aufträge, Bestellungen, Lieferscheine und Rechnungen in BizSoft",
+    "Koordinierte Versandvorbereitung mit GLS-Etikettendrucker und Etikettenportal",
+    "Pflegte Kundenkommunikation und interne Unterlagen zuverlässig",
+    "Unterstützte die Geschäftsführung im täglichen Büro- und Organisationsbetrieb"
+   ],
+   "art": "arbeit",
+   "skills": "organisation kunden doku office versand"
+  },
+  {
+   "zeit": "07/2024 – 08/2025",
+   "titel": "Studienberechtigung",
+   "ort": "VHS Ottakring | Universität Wien",
+   "text": "Erwarb die Studienberechtigung für das Studium der Landschaftsplanung und Landschaftsarchitektur mit naturwissenschaftlichem Schwerpunkt.",
+   "mehr": [
+    "Prüfungsfächer: Aufsatz, Mathematik, Englisch, Biologie und Umweltkunde, Physik"
+   ],
+   "art": "ausbildung",
+   "skills": "",
+   "stern": true,
+   "schlaufe": true
+  },
+  {
+   "zeit": "07/2022 – 06/2024",
+   "titel": "Neuorientierung und Planung der Selbstständigkeit",
+   "ort": "",
+   "text": "Analysierte persönliche Stärken und berufliche Perspektiven, plante den Weg zur Studienberechtigung und entwickelte Geschäfts- und Vermarktungskonzepte.",
+   "mehr": [
+    "Analysierte persönliche Stärken und berufliche Perspektiven",
+    "Plante gezielt den Weg zur Studienberechtigung und zum Studium",
+    "Entwickelte Geschäfts- und Vermarktungskonzepte sowie digitale Kommunikationskanäle",
+    "Sammelte praktische Erfahrungen durch Praktika und Schnuppertage im sozialen Bereich, darunter ein einmonatiges Praktikum im Jugendzentrum See You in Krems (2023)",
+    "Führte Marktanalysen durch und konzipierte neue Produkte"
+   ],
+   "art": "eigenes",
+   "skills": "organisation"
+  },
+  {
+   "zeit": "03/2022 – 06/2022",
+   "titel": "Produktionsmitarbeiter",
+   "ort": "Exterstahl | Krems an der Donau",
+   "text": "Kommissionierte Bauteile und Werkzeuge, führte Qualitätskontrollen durch und erfasste Daten in SAP.",
+   "mehr": [
+    "Kommissionierte Bauteile und Werkzeuge für Produktionsabläufe",
+    "Führte Qualitätskontrollen durch",
+    "Erfasste und dokumentierte Daten in SAP"
+   ],
+   "art": "arbeit",
+   "skills": "office doku technik"
+  },
+  {
+   "zeit": "01/2022 – 02/2022",
+   "titel": "Reinraumtechniker",
+   "ort": "ECOS | Kirchberg am Wagram | Basel/CH",
+   "text": "Montage und Instandhaltung in Reinräumen der Pharmaindustrie unter hohen Hygiene-, Sicherheits- und Qualitätsstandards, mit Projekteinsatz in der Schweiz.",
+   "art": "arbeit",
+   "skills": "technik fuehrung"
+  },
+  {
+   "zeit": "06/2018 – 02/2021",
+   "titel": "Maschinenführer / Teamsprecher Trumpf-Rohrlaser",
+   "ort": "voestalpine | Krems an der Donau",
+   "text": "Richtete Rohrlaseranlagen ein, bediente sie und überwachte den Produktionsprozess; koordinierte das Anlagenteam im Schichtbetrieb und führte Qualitätskontrollen mit einer 3D-Messmaschine durch.",
+   "mehr": [
+    "Richtete Rohrlaseranlagen ein, bediente diese sicher und überwachte den Produktionsprozess",
+    "Koordinierte das Anlagenteam im Schichtbetrieb und war zentrale Ansprechperson für technische und organisatorische Fragen",
+    "Führte Qualitätskontrollen mit einer 3D-Messmaschine durch",
+    "Dokumentierte technische Abläufe und Messergebnisse",
+    "Absolvierte die Trumpf-Schulungen für Laserschutz und Laserprogrammierung"
+   ],
+   "art": "arbeit",
+   "skills": "fuehrung doku technik",
+   "stern": true
+  },
+  {
+   "zeit": "09/2015 – 05/2018",
+   "titel": "Instandhaltungstechniker / Montagearbeiter",
+   "ort": "Bilfinger Personalmanagement | Krems an der Donau",
+   "text": "Führte Montage- und Instandhaltungsarbeiten unter realen Industriebedingungen durch und kommissionierte Bauteile und Werkzeuge für gezielte Werkseinsätze.",
+   "mehr": [
+    "Einsatzorte unter anderem: ATC Metallwelt St. Pölten, Kiesunion Grafenwörth, Bauschutz Absdorf, Chemserv Krems und voestalpine Krems"
+   ],
+   "art": "arbeit",
+   "skills": "technik"
+  },
+  {
+   "zeit": "01/2013 – 04/2015",
+   "titel": "Ausbildung Elektrotechnik / Metalltechnik",
+   "ort": "WIFI Technikcenter | St. Pölten",
+   "text": "Absolvierte eine Fachausbildung in Gebäude- und Automatisierungstechnik und erwarb die KNX-Zertifizierung.",
+   "art": "ausbildung",
+   "skills": "technik",
+   "schlaufe": true
+  },
+  {
+   "zeit": "01/2011 – 04/2012",
+   "titel": "Einzelhandelskaufmann / Marktleiterstellvertreter",
+   "ort": "SPAR AG | Mautern an der Donau",
+   "text": "Führte Mitarbeitende und organisierte Abläufe im Marktbetrieb, plante Arbeitsabläufe und Personaleinsatz und sicherte Verkaufs- und Qualitätsstandards.",
+   "mehr": [
+    "Absolvierte Führungskräftelehrgang, Betriebsorganisationsseminar sowie Arbeitsrecht- und SAP-Schulung"
+   ],
+   "art": "arbeit",
+   "skills": "fuehrung organisation kunden",
+   "stern": true
+  },
+  {
+   "zeit": "04/2007 – 06/2010",
+   "titel": "Einzelhandelskaufmann",
+   "ort": "SPAR AG | Krems an der Donau",
+   "text": "Übernahm Waren, kontrollierte Frische und Sauberkeit und verantwortete die Obst- und Gemüseabteilung; setzte Hygiene- und HACCP-Vorschriften zuverlässig um.",
+   "mehr": [
+    "Absolvierte den Nachwuchsführungskräftelehrgang und weitere fachliche Seminare"
+   ],
+   "art": "arbeit",
+   "skills": "kunden organisation"
+  },
+  {
+   "zeit": "09/2003 – 08/2006",
+   "titel": "Lehre Einzelhandelskaufmann",
+   "ort": "SPAR AG | Krems an der Donau",
+   "text": "Absolvierte eine fundierte kaufmännische Ausbildung im Lebensmittelhandel und schloss die Lehrabschlussprüfung erfolgreich ab.",
+   "art": "ausbildung",
+   "skills": "kunden",
+   "schlaufe": true
+  },
+  {
+   "zeit": "1994 – 2003",
+   "titel": "Schulbildung",
+   "ort": "Langenlois",
+   "text": "Volksschule (1994–1998), Hauptschule (1998–2002) und Polytechnische Schule (2002–2003).",
+   "art": "ausbildung",
+   "skills": ""
+  }
+ ],
+ "BLICK": [
+  [
+   "Studium",
+   "Landschaftsplanung und Landschaftsarchitektur, BOKU Wien"
+  ],
+  [
+   "Berufserfahrung",
+   "Über 20 Jahre in Technik, Handwerk, Handel, Büro und Betreuung"
+  ],
+  [
+   "Fachliche Schwerpunkte",
+   "Garten- und Freiraumgestaltung, heimische Pflanzen, Vegetationsökologie, Naturschutz, GIS"
+  ],
+  [
+   "Praktische Stärken",
+   "Organisation, technische Umsetzung, Teamarbeit, Dokumentation, Kundenkontakt"
+  ]
+ ],
+ "STAERKEN": [
+  [
+   "garten",
+   "Garten- und Pflanzenkenntnisse"
+  ],
+  [
+   "organisation",
+   "Organisation und Prozessdenken"
+  ],
+  [
+   "fuehrung",
+   "Mitarbeiterführung und Teamarbeit"
+  ],
+  [
+   "kunden",
+   "Empathie und Kundenkontakt"
+  ],
+  [
+   "technik",
+   "Technisches Verständnis"
+  ],
+  [
+   "doku",
+   "Dokumentation und Qualitätsbewusstsein"
+  ]
+ ],
+ "PROFIL": "Student der Landschaftsplanung und Landschaftsarchitektur an der BOKU Wien mit über zwanzig Jahren Berufspraxis in Technik, Handwerk, Handel, Büro und sozialer Betreuung. Ich bringe praktisches Verständnis für Pflanzen, Ökologie, Handwerk, Organisation und Technik mit und möchte dieses Wissen in der Planungs- und Grünraumpraxis gezielt einbringen und weiterentwickeln. Besonders interessieren mich die Gestaltung von Freiräumen, heimische Pflanzen, ökologische Zusammenhänge, Naturschutz sowie die Arbeit mit Geodaten.",
+ "STATUS": "Suche Teilzeitstelle · 8 bis 12 Wochenstunden",
+ "ORT": "Gobelsburg, Niederösterreich",
+ "MAIL": "amondaniel@live.at",
+ "LEIDENSCHAFT": [
+  "Im eigenen Garten verbinde ich Gestaltung, Beobachtung und praktische Arbeit: Ich plane Beete, pflege Gehölze, vermehre Pflanzen, arbeite mit vorhandenen Materialien und entwickle Lösungen im Laufe der Jahreszeiten weiter. Ob eine Pflanze am richtigen Standort gedeiht, zeigt sich oft erst nach einer Saison — genau diese Beobachtung und Weiterentwicklung machen für mich den Reiz aus.",
+  "Auch in den Gärten von Freund:innen helfe ich gerne bei Schnitt, Pflege und praktischen Arbeiten. Dabei lerne ich unterschiedliche Böden, Standorte und Gestaltungsansätze kennen.",
+  "Diese Neugier bringe ich auch in den Weinberg direkt vor meiner Haustür mit. Dort beobachte ich, wie Landschaft, Pflanzen und Standorte sich über das Jahr verändern. Aus dieser Erfahrung ist der Wunsch entstanden, Landschaft und Pflanzen beruflich zu verstehen, zu gestalten und zu planen."
+ ]
+}
