@@ -7,7 +7,7 @@ HIER = os.path.dirname(os.path.abspath(__file__))
 VORLAGE = os.path.join(HIER, "vorlage")
 sys.path.insert(0, HIER)
 from lupe_svg import plan_svg, praxis_svg
-from sehen import JS_MOTIVE, seiten as sehen_seiten, ZITAT  # derselbe Gartenplan zweimal
+from sehen import JS_MOTIVE, seiten as sehen_seiten, ZITAT, streifen_html  # derselbe Gartenplan zweimal
 
 e = _h.escape
 def lies(p, base=VORLAGE):
@@ -149,7 +149,7 @@ def seite(titel, beschr, style, body, scripts, datei="index.html", robots=""):
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(titel)}</title>
 <meta name="description" content="{e(beschr)}">{robots}
-<meta name="theme-color" content="#f6f5f2">
+<meta name="theme-color" content="#EFEAE0">
 <link rel="canonical" href="{DOMAIN}/{"" if datei == "index.html" else datei}">
 <meta property="og:title" content="{e(titel)}">
 <meta property="og:description" content="{e(beschr)}">
@@ -159,6 +159,7 @@ def seite(titel, beschr, style, body, scripts, datei="index.html", robots=""):
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="schriften.css">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="collage.css">
 <style>
 {style}
 </style>
@@ -178,24 +179,25 @@ def stil(datei):
 
 # ---------- index ----------
 hero_css = r'''
-.lupe{position:relative;height:100svh;min-height:34rem;max-height:62rem;overflow:hidden;cursor:none;background:#fff;--mx:62%;--my:48%;--r:0px;touch-action:pan-y;user-select:none;-webkit-user-select:none;outline-offset:-4px}
+.lupe{position:relative;height:100svh;min-height:34rem;max-height:62rem;overflow:hidden;cursor:none;background:var(--bg);--mx:62%;--my:48%;--r:0px;touch-action:pan-y;user-select:none;-webkit-user-select:none;outline-offset:-4px}
 .lupe-ebene{position:absolute;inset:0}
-.lupe-ebene svg{display:block;width:100%;height:100%}
 .lupe-b{z-index:2;clip-path:circle(var(--r) at var(--mx) var(--my))}
-.lupe-a::after,.lupe-b::after{content:"";position:absolute;inset:0;pointer-events:none}
-.lupe-a::after{background:linear-gradient(to top,rgba(255,255,255,.95) 0,rgba(255,255,255,.7) 30%,rgba(255,255,255,0) 60%)}
-.lupe-b::after{background:linear-gradient(to top,rgba(10,44,22,.9) 0,rgba(10,44,22,.68) 32%,rgba(10,44,22,0) 64%)}
-.lupe-ring{position:absolute;left:var(--mx);top:var(--my);width:calc(var(--r)*2);height:calc(var(--r)*2);transform:translate(-50%,-50%);border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1.5px var(--tinte),inset 0 0 0 1.5px var(--tinte),0 14px 36px rgba(22,24,22,.22);pointer-events:none;z-index:4}
-.lupe-text{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:0 var(--rand) clamp(4rem,9vh,5.5rem);pointer-events:none}
-.lupe-text .mono{position:relative;z-index:1;margin-bottom:1rem;color:var(--gruen-text)}
-.lupe-titel{position:relative;z-index:1;margin:0;font-size:clamp(2.6rem,7.4vw,6.4rem);line-height:.96;letter-spacing:-.04em;color:var(--tinte)}
-.lupe-titel-b{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:flex-end;padding:0 var(--rand) clamp(4rem,9vh,5.5rem);font-family:var(--hand);font-weight:400;font-size:clamp(3rem,8.6vw,7.2rem);line-height:.94;letter-spacing:0;color:#fff;clip-path:circle(var(--r) at var(--mx) var(--my))}
-.lupe-hinweis,.lupe-legende{position:absolute;top:clamp(84px,14vh,110px);z-index:5;margin:0;padding:.5rem 1rem;border-radius:1.2rem;background:#fff;box-shadow:0 0 0 1.5px var(--line);font:400 1.05rem/1.25 var(--hand);color:var(--gruen-text);pointer-events:none}
-.lupe-hinweis{left:var(--gut)}
-.lupe-legende{right:var(--gut);text-align:right}
-.lupe-weiter{position:absolute;right:var(--gut);bottom:1.6rem;z-index:6;cursor:pointer;background:#fff}
+.lupe-b::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(135deg,rgba(14,22,8,.66) 0,rgba(14,22,8,.34) 48%,rgba(14,22,8,.05) 80%)}
+.lupe .plan{position:absolute;right:var(--gut);top:clamp(72px,10vh,96px);bottom:31%;width:auto;aspect-ratio:770/700;max-width:62%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%);mask-image:linear-gradient(90deg,transparent 0,#000 7%)}
+.lupe .plan svg{display:block;width:100%;height:100%}
+.lupe .hill{position:absolute;left:0;bottom:0;width:100%;height:clamp(170px,34%,420px);object-fit:cover;object-position:50% 0;display:block}
+.lupe .praxis{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;display:block}
+.lupe-ring{position:absolute;left:var(--mx);top:var(--my);width:calc(var(--r)*2);height:calc(var(--r)*2);transform:translate(-50%,-50%);border-radius:50%;border:3px solid var(--bg);box-shadow:0 0 0 1.5px var(--wald),inset 0 0 0 1.5px var(--wald),0 14px 36px rgba(22,24,22,.28);pointer-events:none;z-index:4}
+.lupe-text{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;justify-content:flex-start;padding:clamp(88px,13vh,120px) var(--rand) 0;pointer-events:none}
+.lupe-text.b{z-index:3;color:#fff;clip-path:circle(var(--r) at var(--mx) var(--my))}
+.lupe-text .mono{margin-bottom:1.1rem;color:var(--gruen-text)}
+.lupe-titel{margin:0;font-size:clamp(2.5rem,6.6vw,6.4rem);line-height:.94;color:var(--wald)}
+.lupe-text.b .lupe-titel,.lupe-text.b .g{color:#F6F2E6}
+.lupe-text.b .s{color:#DCE5B8}
+.lupe-hinweis{position:absolute;left:var(--gut);bottom:1.6rem;z-index:5;margin:0;padding:.55rem 1.1rem;border-radius:999px;background:var(--bg);font:400 .95rem/1.25 var(--serif);font-style:italic;color:var(--wald);pointer-events:none;max-width:min(30rem,60vw)}
+.lupe-weiter{position:absolute;right:var(--gut);bottom:1.6rem;z-index:6;cursor:pointer;background:var(--bg)}
 @media (hover:none){.lupe{cursor:auto}}
-@media (max-width:42rem){.lupe-hinweis{display:none}.lupe-legende{left:var(--gut);right:auto;text-align:left}.lupe-weiter{left:var(--gut);right:auto}.lupe-text,.lupe-titel-b{padding-bottom:5rem}}
+@media (max-width:42rem){.lupe-titel{font-size:11.5vw}.lupe .plan{left:var(--gut);right:var(--gut);max-width:none;aspect-ratio:auto;top:47%;bottom:27%;-webkit-mask-image:none;mask-image:none}.lupe .hill{height:26%}.lupe-hinweis{display:none}.lupe-weiter{left:var(--gut);right:auto}}
 .zitat-s{margin:clamp(30px,5vw,60px) 0}.zitat-s blockquote{font-family:var(--kopf);font-weight:800;font-size:clamp(1.7rem,4.6vw,3.6rem);line-height:1.05;letter-spacing:-.035em;max-width:20em}.zitat-s figcaption{margin-top:16px}
 .intro-s{padding-bottom:0}
 .intro-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gut)}
@@ -218,16 +220,30 @@ hero_css = r'''
 .feat .meta b{letter-spacing:-.01em}
 @media(max-width:800px){.feat a,.feat a:nth-child(2){grid-column:1/-1;margin-top:0}}
 '''
-hero = f'''<section class="lupe" id="lupe" tabindex="0" aria-label="Kopfbild: derselbe Gartenplan als Zeichnung und als gelebter Garten. Eine Lupe lässt sich mit Maus, Finger oder Pfeiltasten bewegen.">
-  <div class="lupe-ebene lupe-a">{plan_svg()}</div>
-  <div class="lupe-ebene lupe-b" aria-hidden="true">{praxis_svg()}</div>
+
+def plan_hero():
+    p = plan_svg()
+    p = p.replace('<rect width="1200" height="800" fill="#fff"/>', "")
+    p = re.sub(r'<path d="M0 \d+ C[^>]*stroke-opacity="\.16"[^>]*/>', "", p)
+    p = p.replace('fill="#fff"', 'fill="#F5F1E8"').replace('stroke="#fff"', 'stroke="#EFEAE0"')
+    p = p.replace('viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice"', 'viewBox="440 40 770 700" preserveAspectRatio="xMidYMax meet"')
+    return p
+
+hero = f'''<section class="lupe" id="lupe" tabindex="0" aria-label="Kopfbild: derselbe Ort als Plan und als Foto. Eine Lupe lässt sich mit Maus, Finger oder Pfeiltasten bewegen.">
+  <div class="lupe-ebene lupe-a">
+    <div class="plan">{plan_hero()}</div>
+    <img class="hill" src="bilder/hero-huegel.webp" alt="" width="2000" height="662">
+  </div>
+  <div class="lupe-ebene lupe-b" aria-hidden="true"><img class="praxis" src="bilder/praxis-lupe.jpg" alt=""></div>
   <div class="lupe-ring" aria-hidden="true"></div>
-  <p class="lupe-hinweis" aria-hidden="true">Fahre mit der Lupe über den Plan.<br>Gedrückt halten: große Linse.</p>
-  <p class="lupe-legende" aria-hidden="true">Außen: der Plan<br>Innen: die Praxis</p>
+  <p class="lupe-hinweis" aria-hidden="true">Fahre mit der Lupe über den Plan. Außen der Plan, innen die Praxis.</p>
   <div class="lupe-text">
     <p class="mono">Daniel Amon · Landschaftsplanung · BOKU Wien</p>
-    <h1 class="lupe-titel">Landschaft planen.<br>Freiräume gestalten.</h1>
-    <p class="lupe-titel-b" aria-hidden="true">Zwanzig Jahre Praxis.<br>Hände in der Erde.</p>
+    <h1 class="lupe-titel"><span class="g">Landschaft<br>planen.</span><em class="s">Freiräume<br>gestalten.</em></h1>
+  </div>
+  <div class="lupe-text b" aria-hidden="true">
+    <p class="mono" style="visibility:hidden">Daniel Amon · Landschaftsplanung · BOKU Wien</p>
+    <p class="lupe-titel"><span class="g">Zwanzig Jahre<br>Praxis.</span><em class="s">Hände in<br>der Erde.</em></p>
   </div>
   <a class="btn lupe-weiter" href="#start">Weiter <span class="arr">↓</span></a>
 </section>'''
@@ -235,7 +251,7 @@ index_body = f'''<main>
 {hero}
 <section class="intro-s" id="start">
   <div class="wrap intro-grid">
-    <h2 class="h2 rv intro-h">Zwischen Plan und Praxis.</h2>
+    <div class="rv intro-h"><h2 class="h2">Zwischen Plan<br>und Praxis.</h2><img class="fels" src="bilder/fels-moos.webp" alt="" loading="lazy" width="1700" height="1076"></div>
     <div class="rv intro-t"><p class="lead" style="margin-bottom:24px">Ich studiere Landschaftsplanung und Landschaftsarchitektur an der BOKU Wien. Dazu kommen über zwanzig Jahre Berufspraxis in Technik, Handwerk, Handel, Büro und Betreuung.</p><p style="margin-bottom:24px"><span class="status">Suche Teilzeitstelle · 8 bis 12 Wochenstunden</span></p><a class="btn" href="portfolio.html">Portfolio <span class="arr">→</span></a></div>
   </div>
   <div class="wrap"><div class="zahlen" id="zahlen"></div></div>
@@ -244,9 +260,15 @@ index_body = f'''<main>
   <div class="wrap">
     <div class="sec-head mono"><span>Wie ich sehe</span><span>Inspiration</span></div>
     <div class="rule"></div>
-    <figure class="zitat-s rv"><blockquote>„{ZITAT[0]}“</blockquote><figcaption class="mono">{ZITAT[1]}</figcaption></figure>
-    <p class="lead rv" style="max-width:34em">Ich sehe in einem Graben Schafgarbe und Beifuß, wo andere nur Unkraut sehen. Auf dieser Seite sammle ich, was mir auffällt.</p><br>
-    <a class="btn" href="sehen.html">Zur Sammlung <span class="arr">→</span></a>
+    <div class="sehen-grid">
+      <div class="sehen-txt">
+        <figure class="zitat-s rv"><blockquote>„{ZITAT[0]}“</blockquote><figcaption class="mono">{ZITAT[1]}</figcaption></figure>
+        <p class="lead rv" style="max-width:30em">Ich sehe in einem Graben Schafgarbe und Beifuß, wo andere nur Unkraut sehen. Auf dieser Seite sammle ich, was mir auffällt.</p><br>
+        <a class="btn" href="sehen.html">Zur Sammlung <span class="arr">→</span></a>
+      </div>
+      <figure class="sehen-bild rv"><img src="bilder/pflanzen.jpg" alt="Schafgarbe, Beifuß, Eichenlaub und Flechten am Wegrand" loading="lazy" width="1400" height="2087"><figcaption class="mono">Schafgarbe · Beifuß · Flechten</figcaption></figure>
+    </div>
+    {streifen_html()}
   </div>
 </section>
 <section>
@@ -270,9 +292,12 @@ schreibe("index.html", seite("Daniel Amon · Landschaftsplanung und Praxis", "Po
 
 # ---------- portfolio ----------
 pf_body = '''<main>
-<div class="wrap top">
+<header class="band" style="--bild:url(bilder/hohlweg.jpg)"><div class="wrap">
   <p class="mono">Portfolio · <span id="count"></span> Arbeiten · Prototyp</p>
   <h1 class="display" style="margin-top:18px">Arbeiten</h1>
+  <em class="s" style="margin-left:0">Planung, Praxis, Digitales.</em>
+</div></header>
+<div class="wrap" style="padding-top:36px">
   <div class="filters" id="filters">
     <button class="f on" data-f="all">Alle</button>
     <button class="f" data-f="Planung">Planung</button>
@@ -341,24 +366,34 @@ um_body = '''<main>
   <div class="wrap">
     <div class="sec-head mono"><span>01 / Haltung</span><span>Wie Praxis und Planung einander prüfen</span></div>
     <div class="rule"></div><br><br>
+    <div class="haltung"><figure class="blatt-panel rv"><img src="bilder/blatt.jpg" alt="Getrocknete Königskerzenblätter vor hellem Grund" loading="lazy" width="1300" height="1741"></figure>
     <div class="pillars">
       <div class="rv"><p class="mono">I</p><h3>Beobachten</h3><p class="body">Ob eine Pflanze am richtigen Standort gedeiht, zeigt sich oft erst nach einer Saison. Genau diese Beobachtung macht für mich den Reiz aus.</p></div>
       <div class="rv"><p class="mono">II</p><h3>Selber machen</h3><p class="body">Hochbeete, Pflaster, Beleuchtung: Ich arbeite mit vorhandenen Materialien und lerne am fertigen Ding, was der Plan nicht verrät.</p></div>
       <div class="rv"><p class="mono">III</p><h3>Systematisch denken</h3><p class="body">Organisation, Dokumentation und Prozessdenken aus zwanzig Jahren Berufspraxis, jetzt mit QGIS und Planungsmethodik verbunden.</p></div>
-    </div>
+    </div></div>
   </div>
 </section>
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="sec-head mono"><span>02 / Zwischenraum</span><span>Interaktiv</span></div>
+    <div class="sec-head mono"><span>02 / Pflanzgenerator</span><span>Interaktiv</span></div>
     <div class="rule"></div><br><br>
-    <div class="morph">
-      <div class="cv rv" id="cv"></div>
-      <div class="ctl rv">
-        <h2 class="h2">Zieh am<br>Regler.</h2>
-        <p class="body" style="margin-top:16px">Links streng wie ein Plan, rechts frei wie ein gewachsener Garten. Ich arbeite irgendwo dazwischen.</p>
-        <input type="range" id="rg" min="0" max="100" value="12" aria-label="Von Plan zu Garten">
-        <div class="ends mono"><span>Plan</span><span>Garten</span></div>
+    <div class="gen">
+      <div class="gen-feld rv"><svg id="gsvg" viewBox="0 0 600 600" role="img" aria-label="Zufällig erzeugte Pflanzung"></svg><p class="gen-info mono" id="ginfo"></p></div>
+      <div class="gen-reg rv">
+        <h2 class="gen-tit"><span class="g">Pflanz</span><em class="s">dir was.</em></h2>
+        <p class="body">Vom strengen Raster zur gewachsenen Gesellschaft: Arten mischen, Dichte und Streuung ändern, die Zeit laufen lassen. Jeder Wurf ist neu.</p>
+        <div class="gen-pre" id="gpre"></div>
+        <div class="gen-gr">
+          <label>Zeit<span class="mono">Experiment → Zeit übernimmt</span><input type="range" id="gt" min="0" max="100" value="30"></label>
+          <label>Dichte<span class="mono">leer → dicht</span><input type="range" id="gd" min="5" max="100" value="55"></label>
+          <label>Raster ↔ Geste<span class="mono">Plan → gewachsen</span><input type="range" id="gs" min="0" max="100" value="35"></label>
+          <label>Gruppenbildung<span class="mono">verstreut → Flecken</span><input type="range" id="gk" min="0" max="100" value="30"></label>
+          <label>Größenvielfalt<span class="mono">einheitlich → wild</span><input type="range" id="gv" min="0" max="100" value="50"></label>
+        </div>
+        <p class="mono gen-kopf">Artenanteil</p>
+        <div class="gen-arten" id="garten"></div>
+        <button type="button" class="btn" id="gneu">Neu würfeln <span class="arr">↻</span></button>
       </div>
     </div>
   </div>
@@ -378,14 +413,15 @@ morph_js = morph_js.replace("#e4572e", "#F6D44A").replace("#2e6fe4", "#3E8A4F")
 um_js = f'''<script>
 const D=window.DATEN;
 document.getElementById('profil').textContent=D.profil.split(". ")[0]+".";
-{morph_js}
-</script>'''
+</script>
+<script src="generator.js"></script>'''
 schreibe("ueber-mich.html", seite("Über mich · Daniel Amon", "Daniel Amon: Student der Landschaftsplanung, Praxis in Garten, Technik und Organisation.", um_css, um_body, um_js, datei="ueber-mich.html"))
 
 # ---------- kontakt ----------
-k_body = '''<main>
+k_body = '''<div class="kbg" aria-hidden="true"></div>
+<main>
 <div class="wrap k">
-  <div>
+  <div class="glas">
     <p class="mono">Kontakt</p>
     <h1 class="kin" id="kin" aria-label="Schreib mir.">Schreib<br>mir.</h1>
     <a class="mail" href="mailto:amondaniel@live.at">amondaniel@live.at</a>
@@ -401,11 +437,12 @@ k_body = '''<main>
 </div>
 </main>'''
 k_js = re.search(r"<script>(.*?)</script>", lies("kontakt.html").split("main.js")[1], re.S).group(0)
-k_js = k_js.replace("['#e4572e','#2e6fe4','#f0b429']", "['#1D6B37','#6BAF88','#F6D44A']")
+k_js = k_js.replace("['#e4572e','#2e6fe4','#f0b429']", "['#E4EBC8','#C9D68A','#F6D44A']")
 schreibe("kontakt.html", seite("Kontakt · Daniel Amon", "Kontakt zu Daniel Amon.", stil("kontakt.html"), k_body, k_js, datei="kontakt.html"))
 
 wd_body = """<main>
-<div class="wrap top">
+<div class="wrap top wd-kopf">
+  <img class="wd-deko" src="bilder/trockenrasen.webp" alt="" width="1500" height="1784">
   <p class="mono">Werdegang</p>
   <h1 class="display" style="margin:16px 0 20px">Vom Handwerk<br>zur Landschaft.</h1>
   <p class="lead" id="profil"></p>

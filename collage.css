@@ -1,0 +1,141 @@
+/* Collage-Stil: Papier, Moosgrün, ausgeschnittene Fotos, schwere Grotesk plus Serif-Kursiv.
+   Wird nach style.css geladen und überschreibt dessen Farben. Von bauen.py nicht überschrieben. */
+:root{
+  --bg:#EFEAE0; --ink:#1B2614; --mid:#69705A; --line:rgba(27,38,20,.18);
+  --tinte:#1B2614; --gruen-text:#3F5A1F; --mint:#DDE2D0; --salbei:#D9DCD3; --moos:#5E7A2B; --wald:#1F2B16; --acc1:#4F6B2A;
+  --serif:'Playfair Display',Georgia,'Times New Roman',serif;
+}
+body{background:var(--bg);color:var(--ink)}
+body::before{display:none}
+::selection{background:var(--moos);color:#fff}
+header.nav{background:rgba(239,234,224,.9);border-bottom:0}
+header.nav .logo{font-family:var(--kopf);font-weight:800;letter-spacing:-.03em}
+
+/* Typografie: Grotesk (.g) und Serif-Kursiv (.s) */
+.g{display:block;font-family:var(--kopf);font-weight:800;letter-spacing:-.045em;line-height:.92;white-space:nowrap}
+.s{display:block;font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em;line-height:1;color:var(--moos);white-space:nowrap;margin:-.04em 0 0 .45em;font-size:.94em}
+.display{color:var(--wald);letter-spacing:-.045em}
+.h2{color:var(--wald)}
+.lead{color:var(--ink)}
+
+/* Buttons und Marken */
+.btn{border-radius:999px;border-color:var(--wald);padding:15px 26px}
+.btn::before{background:var(--wald)}
+.btn:hover{color:var(--bg)}
+.marken li{background:var(--salbei);border-color:transparent}
+.f{border-radius:999px}
+.rule{background:var(--wald)}
+.zahlen div{border-top-color:var(--wald)}
+
+/* Platzhalter-Kacheln gedämpft, Eckstufen wie bei den Vorlagen */
+.tile{background:var(--salbei)}
+.tile>svg,.tile>div{filter:saturate(.38) contrast(.92) sepia(.12)}
+.feat .tile,.card .tile{clip-path:polygon(0 0,84% 0,84% 5%,92% 5%,92% 10%,100% 10%,100% 100%,0 100%)}
+.feat a:nth-child(2) .tile,.card:nth-child(2n) .tile{clip-path:polygon(0 0,100% 0,100% 100%,16% 100%,16% 94%,8% 94%,8% 89%,0 89%)}
+
+/* Fußzeile */
+footer.foot,footer.foot a{color:#E6E2D3}
+footer.foot{background:var(--wald);border-top:0}
+
+/* Streifen aus den Fotos (wie "Color Story") */
+.streifen{display:flex;gap:clamp(3px,.6vw,8px);align-items:center;height:clamp(180px,30vw,380px);margin-top:clamp(36px,6vw,84px)}
+.streifen i{flex:1;height:var(--h);background-size:cover;background-repeat:no-repeat;background-color:var(--salbei)}
+
+/* Startseite: Fels und Pflanzenfoto */
+.fels{display:block;width:100%;height:auto;margin-top:-.5rem;position:relative;z-index:1;pointer-events:none}
+.intro-h .h2{position:relative;z-index:2}
+.sehen-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gut);align-items:start;margin-top:clamp(20px,4vw,50px)}
+.sehen-txt{grid-column:1/7}
+.sehen-bild{grid-column:8/13;margin:0}
+.sehen-bild img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;clip-path:polygon(0 0,86% 0,86% 4%,93% 4%,93% 8%,100% 8%,100% 100%,0 100%)}
+.sehen-bild figcaption{margin-top:12px}
+.sehen-txt .zitat-s{margin-top:0}
+.sehen-txt .zitat-s blockquote{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(1.6rem,3.3vw,3rem);line-height:1.08;letter-spacing:-.01em;color:var(--wald)}
+@media(max-width:800px){.sehen-txt,.sehen-bild{grid-column:1/-1}}
+
+/* Arbeiten: dunkles Kopfband mit Hohlweg */
+.band{position:relative;min-height:clamp(380px,58vh,620px);padding:140px 0 52px;display:flex;align-items:flex-end;overflow:hidden;color:#EFEAE0;background:var(--wald) var(--bild) center 62%/cover}
+.band::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,26,12,.6),rgba(20,26,12,.22) 42%,rgba(20,26,12,.7))}
+.band>*{position:relative;width:100%}
+.band .mono{color:#E6E2D3}
+.band .display{color:#F3EFE4}
+.band .s{font-size:clamp(1.6rem,3.4vw,3rem);color:#DCE5B8;margin:.5rem 0 0}
+
+/* Über mich: Blatt-Panel neben den drei Haltungen */
+.haltung{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(12px,2vw,28px);align-items:start}
+.blatt-panel{grid-column:1/5;margin:0;background:var(--salbei)}
+.blatt-panel img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover}
+.haltung .pillars{grid-column:5/13;grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.blatt-panel,.haltung .pillars{grid-column:1/-1}}
+@media(max-width:800px){.haltung .pillars{grid-template-columns:1fr}}
+
+/* Werdegang: Trockenrasen-Ausschnitt rechts */
+.wd-kopf{position:relative;min-height:clamp(420px,62vh,640px)}
+.wd-kopf h1{font-size:clamp(2.6rem,7.2vw,7rem);max-width:62%}
+.wd-kopf .lead{max-width:min(34em,52%)}
+.wd-deko{position:absolute;right:0;top:64px;height:min(66vh,40vw,560px);width:auto;pointer-events:none}
+@media(max-width:700px){.wd-kopf{min-height:0}.wd-kopf h1,.wd-kopf .lead{max-width:none}.wd-deko{position:relative;top:auto;height:auto;width:72%;display:block;margin:24px 0 0 auto}}
+
+/* Kontakt: Milchglas über unscharfem Blatt */
+.kbg{position:fixed;inset:0;z-index:0;background:var(--wald) url(bilder/blatt-makro.jpg) center/cover}
+.kbg::after{content:"";position:absolute;inset:0;background:rgba(18,28,10,.38)}
+.glas{position:relative;margin:0 0 70px;padding:clamp(24px,4vw,56px);border-radius:28px;color:#F3EFE4;background:rgba(228,236,208,.14);-webkit-backdrop-filter:blur(22px) saturate(1.1);backdrop-filter:blur(22px) saturate(1.1);border:1px solid rgba(255,255,255,.28)}
+.glas .mono{color:rgba(243,239,228,.8)}
+.glas .rows{border-top-color:rgba(255,255,255,.5)}
+.glas .rows a{border-bottom-color:rgba(255,255,255,.22)}
+.glas .rows a:hover{background:#F3EFE4;color:var(--wald)}
+.glas .btn{border-color:#F3EFE4;color:#F3EFE4}
+.glas .btn::before{background:#F3EFE4}
+.glas .btn:hover{color:var(--wald)}
+
+/* Sehen: Lupen-Beschriftungen in Serif-Kursiv */
+.blick .t{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(1.05rem,1.8vw,1.35rem)}
+.blick .b .t span{background:var(--wald)}
+
+/* Portfolio: keine negativen Versätze, damit Bildunterschriften nie überdeckt werden */
+.grid .card:nth-child(5n){margin-top:0}
+.grid .card:nth-child(5n+2){margin-top:3vw}
+.grid{row-gap:clamp(28px,4vw,56px)}
+
+/* Pflanzgenerator (Über mich) */
+.gen{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gut);align-items:start}
+.gen-feld{grid-column:1/7;position:sticky;top:84px;margin:0}
+.gen-feld svg{display:block;width:100%;height:auto;aspect-ratio:1;background:#F7F3EA;border:1px solid var(--wald)}
+.gen-info{margin-top:10px;color:rgba(27,38,20,.7)}
+.gen-reg{grid-column:8/13}
+.gen-tit .g{font-size:clamp(2.6rem,5vw,4.4rem)}
+.gen-tit .s{font-size:clamp(2.2rem,4.4vw,3.8rem)}
+.gen-reg .body{margin:14px 0 18px}
+.gen-pre{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.gen-gr{display:grid;gap:14px}
+.gen-gr label{display:grid;grid-template-columns:1fr auto;align-items:baseline;column-gap:12px;font-weight:600}
+.gen-gr label .mono{font-weight:400;font-size:.68rem;color:rgba(27,38,20,.6)}
+.gen-gr input{grid-column:1/-1;margin:6px 0 0}
+.gen-kopf{margin:22px 0 8px;padding-top:14px;border-top:1px solid var(--wald)}
+.gen-arten{display:grid;gap:10px;margin-bottom:22px}
+.art{display:grid;grid-template-columns:14px 1fr auto;align-items:center;column-gap:10px}
+.art i{width:14px;height:14px;border-radius:50%}
+.art output{font-family:var(--mono);font-size:.78rem;min-width:2.2em;text-align:right}
+.art input{grid-column:1/-1;margin:4px 0 0}
+.gen input[type=range]{width:100%;accent-color:var(--moos)}
+@media(max-width:900px){.gen-feld,.gen-reg{grid-column:1/-1}.gen-feld{position:static}}
+
+/* Schnappschüsse (Sehen) */
+.sn-kopf{margin-bottom:clamp(24px,4vw,48px)}
+.sn-kopf .g{font-size:clamp(2.2rem,5vw,4.4rem)}.sn-kopf .s{font-size:clamp(2rem,4.4vw,3.8rem)}
+.schnapp{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(28px,4vw,56px) var(--gut);align-items:start}
+.sn{margin:0;background:#F7F3EA;padding:10px 10px 14px;box-shadow:0 10px 24px rgba(27,38,20,.14)}
+.sn1{grid-column:1/6;transform:rotate(-1.2deg)}.sn2{grid-column:6/10;margin-top:5vw;transform:rotate(1.1deg)}.sn3{grid-column:10/13;transform:rotate(-.8deg)}
+.sn4{grid-column:2/6;transform:rotate(.9deg)}.sn5{grid-column:6/9;margin-top:3vw;transform:rotate(-1deg)}.sn6{grid-column:9/13;transform:rotate(1.2deg)}
+.sn-bild{position:relative;background:var(--salbei);overflow:hidden}
+.sn1 .sn-bild,.sn6 .sn-bild{aspect-ratio:4/5}.sn2 .sn-bild,.sn5 .sn-bild{aspect-ratio:1}.sn3 .sn-bild{aspect-ratio:3/4}.sn4 .sn-bild{aspect-ratio:4/3}
+.sn-bild img{display:block;width:100%;height:100%;object-fit:cover}
+.sn-leer{display:none;position:absolute;inset:0;align-items:center;justify-content:center;color:rgba(27,38,20,.55)}
+.sn-bild.leer .sn-leer{display:flex}
+.sn figcaption{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;padding-top:12px;align-items:baseline}
+.sn figcaption .mono{grid-row:1/3;color:rgba(27,38,20,.55)}
+.sn figcaption b{font-family:var(--kopf);font-weight:800;letter-spacing:-.02em}
+.sn figcaption em{font-family:var(--serif);font-style:italic;color:var(--moos);line-height:1.25}
+@media(max-width:800px){.sn1,.sn2,.sn3,.sn4,.sn5,.sn6{grid-column:1/-1;margin-top:0}.sn1,.sn4{grid-column:1/11}.sn2,.sn5,.sn6{grid-column:2/13}}
+.gen-pre button{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:9px 16px;border:1px solid var(--wald);border-radius:999px;background:none;color:var(--wald);cursor:pointer;transition:background .25s,color .25s}
+.gen-pre button:hover,.gen-pre button.on{background:var(--wald);color:var(--bg)}

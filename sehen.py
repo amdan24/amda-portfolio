@@ -111,6 +111,25 @@ CSS_SEHEN = r'''
 @media(max-width:800px){.zwei .txt,.zwei .bild,.zwei .bild-l,.zwei .txt-r{grid-column:1/-1}}
 '''
 
+STREIFEN = [("pflanzen", "30% 25%", 78), ("blatt-makro", "18% 50%", 100), ("hohlweg", "52% 60%", 68), ("praxis-lupe", "20% 85%", 90),
+            ("blatt", "50% 35%", 84), ("blatt-makro", "85% 40%", 100), ("praxis-lupe", "78% 90%", 72), ("pflanzen", "80% 78%", 92), ("hohlweg", "85% 30%", 76)]
+
+SCHNAPP = [("Beobachtet", "Was mir auf dem Weg auffällt."), ("Festgehalten", "Ein Detail, das ich nicht vergessen will."), ("Gedacht", "Wie ich es mir als Garten vorstelle."),
+           ("Gefunden", "Material, das schon da ist."), ("Gesehen", "Licht, Schatten, Struktur."), ("Gemerkt", "Was ich daraus mitnehme.")]
+
+def schnapp_html(e):
+    f = ""
+    for i, (t, n) in enumerate(SCHNAPP, 1):
+        f += (f'<figure class="sn sn{i} rv"><div class="sn-bild"><img src="bilder/schnappschuesse/{i:02d}.jpg" alt="" loading="lazy" '
+              f'onerror="this.parentNode.classList.add(\'leer\');this.remove()"><span class="sn-leer mono">Foto folgt</span></div>'
+              f'<figcaption><span class="mono">{i:02d}</span><b>{e(t)}</b><em>{e(n)}</em></figcaption></figure>')
+    return f'<div class="schnapp">{f}</div>'
+
+def streifen_html():
+    """Schmale Bildstreifen aus den Fotos (wie 'Color Story'), reine CSS-Ausschnitte."""
+    i = "".join(f'<i style="--h:{h}%;background-image:url(bilder/{n}.jpg);background-position:{pos}"></i>' for n, pos, h in STREIFEN)
+    return f'<div class="streifen rv" aria-hidden="true">{i}</div>'
+
 def seiten(seite, schreibe, e, DATEN_STATIONEN_ALLE):
     # ---------- Sehen ----------
     blicke_html = "".join(
@@ -130,8 +149,17 @@ def seiten(seite, schreibe, e, DATEN_STATIONEN_ALLE):
   <p class="mono">Sehen · Inspiration</p>
   <h1 class="display" style="margin:16px 0 20px">Ich sehe,<br>was da wächst.</h1>
   <p class="lead">Meine Inspiration kommt aus dem Alltag, aus dem genauen Hinschauen. Hier sammle ich, was mir dabei auffällt.</p>
+  {streifen_html()}
   <figure class="zitat rv"><blockquote>„{e(ZITAT[0])}“</blockquote><figcaption class="mono">{e(ZITAT[1])} · {e(ZITAT[2])}</figcaption></figure>
 </div>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head mono"><span>00 / Schnappschüsse</span><span>So denke und sehe ich</span></div>
+    <div class="rule"></div><br>
+    <h2 class="h2 sn-kopf"><span class="g">Festgehalten,</span><em class="s">was ich sehe.</em></h2>
+    {schnapp_html(e)}
+  </div>
+</section>
 <section>
   <div class="wrap">
     <div class="sec-head mono"><span>01 / Zwei Blicke</span><span>Fahre mit der Lupe über die Bilder</span></div>

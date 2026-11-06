@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Kontakt · Daniel Amon</title>
 <meta name="description" content="Kontakt zu Daniel Amon.">
-<meta name="theme-color" content="#f6f5f2">
+<meta name="theme-color" content="#EFEAE0">
 <link rel="canonical" href="https://amda.work/kontakt.html">
 <meta property="og:title" content="Kontakt · Daniel Amon">
 <meta property="og:description" content="Kontakt zu Daniel Amon.">
@@ -15,6 +15,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="schriften.css">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="collage.css">
 <style>
 .k{min-height:100vh;padding-top:140px;display:flex;flex-direction:column;justify-content:space-between}
 .kin{font-size:clamp(3.4rem,14vw,15rem);font-weight:500;letter-spacing:-.06em;line-height:.9;cursor:default;user-select:none}
@@ -31,9 +32,10 @@
 </style>
 </head>
 <body>
+<div class="kbg" aria-hidden="true"></div>
 <main>
 <div class="wrap k">
-  <div>
+  <div class="glas">
     <p class="mono">Kontakt</p>
     <h1 class="kin" id="kin" aria-label="Schreib mir.">Schreib<br>mir.</h1>
     <a class="mail" href="mailto:amondaniel@live.at">amondaniel@live.at</a>
@@ -56,7 +58,7 @@ const kin=document.getElementById('kin');
 const html=kin.innerHTML.split('<br>').map(l=>[...l].map(c=>`<span>${c}</span>`).join('')).join('<br>');
 kin.innerHTML=html;
 const sp=[...kin.querySelectorAll('span')];
-const acc=['#1D6B37','#6BAF88','#F6D44A'];
+const acc=['#E4EBC8','#C9D68A','#F6D44A'];
 addEventListener('mousemove',e=>{
   sp.forEach((s,i)=>{
     const r=s.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;

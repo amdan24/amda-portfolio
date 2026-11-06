@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Über mich · Daniel Amon</title>
 <meta name="description" content="Daniel Amon: Student der Landschaftsplanung, Praxis in Garten, Technik und Organisation.">
-<meta name="theme-color" content="#f6f5f2">
+<meta name="theme-color" content="#EFEAE0">
 <link rel="canonical" href="https://amda.work/ueber-mich.html">
 <meta property="og:title" content="Über mich · Daniel Amon">
 <meta property="og:description" content="Daniel Amon: Student der Landschaftsplanung, Praxis in Garten, Technik und Organisation.">
@@ -15,6 +15,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="schriften.css">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="collage.css">
 <style>
 .hero2{padding-top:130px;display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(12px,2vw,28px);align-items:end}
 .portrait{grid-column:1/6;aspect-ratio:4/5;background:#cfcfcb;position:relative;overflow:hidden;}
@@ -59,24 +60,34 @@ input[type=range]{width:100%;margin:20px 0 6px;accent-color:var(--acc1)}
   <div class="wrap">
     <div class="sec-head mono"><span>01 / Haltung</span><span>Wie Praxis und Planung einander prüfen</span></div>
     <div class="rule"></div><br><br>
+    <div class="haltung"><figure class="blatt-panel rv"><img src="bilder/blatt.jpg" alt="Getrocknete Königskerzenblätter vor hellem Grund" loading="lazy" width="1300" height="1741"></figure>
     <div class="pillars">
       <div class="rv"><p class="mono">I</p><h3>Beobachten</h3><p class="body">Ob eine Pflanze am richtigen Standort gedeiht, zeigt sich oft erst nach einer Saison. Genau diese Beobachtung macht für mich den Reiz aus.</p></div>
       <div class="rv"><p class="mono">II</p><h3>Selber machen</h3><p class="body">Hochbeete, Pflaster, Beleuchtung: Ich arbeite mit vorhandenen Materialien und lerne am fertigen Ding, was der Plan nicht verrät.</p></div>
       <div class="rv"><p class="mono">III</p><h3>Systematisch denken</h3><p class="body">Organisation, Dokumentation und Prozessdenken aus zwanzig Jahren Berufspraxis, jetzt mit QGIS und Planungsmethodik verbunden.</p></div>
-    </div>
+    </div></div>
   </div>
 </section>
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="sec-head mono"><span>02 / Zwischenraum</span><span>Interaktiv</span></div>
+    <div class="sec-head mono"><span>02 / Pflanzgenerator</span><span>Interaktiv</span></div>
     <div class="rule"></div><br><br>
-    <div class="morph">
-      <div class="cv rv" id="cv"></div>
-      <div class="ctl rv">
-        <h2 class="h2">Zieh am<br>Regler.</h2>
-        <p class="body" style="margin-top:16px">Links streng wie ein Plan, rechts frei wie ein gewachsener Garten. Ich arbeite irgendwo dazwischen.</p>
-        <input type="range" id="rg" min="0" max="100" value="12" aria-label="Von Plan zu Garten">
-        <div class="ends mono"><span>Plan</span><span>Garten</span></div>
+    <div class="gen">
+      <div class="gen-feld rv"><svg id="gsvg" viewBox="0 0 600 600" role="img" aria-label="Zufällig erzeugte Pflanzung"></svg><p class="gen-info mono" id="ginfo"></p></div>
+      <div class="gen-reg rv">
+        <h2 class="gen-tit"><span class="g">Pflanz</span><em class="s">dir was.</em></h2>
+        <p class="body">Vom strengen Raster zur gewachsenen Gesellschaft: Arten mischen, Dichte und Streuung ändern, die Zeit laufen lassen. Jeder Wurf ist neu.</p>
+        <div class="gen-pre" id="gpre"></div>
+        <div class="gen-gr">
+          <label>Zeit<span class="mono">Experiment → Zeit übernimmt</span><input type="range" id="gt" min="0" max="100" value="30"></label>
+          <label>Dichte<span class="mono">leer → dicht</span><input type="range" id="gd" min="5" max="100" value="55"></label>
+          <label>Raster ↔ Geste<span class="mono">Plan → gewachsen</span><input type="range" id="gs" min="0" max="100" value="35"></label>
+          <label>Gruppenbildung<span class="mono">verstreut → Flecken</span><input type="range" id="gk" min="0" max="100" value="30"></label>
+          <label>Größenvielfalt<span class="mono">einheitlich → wild</span><input type="range" id="gv" min="0" max="100" value="50"></label>
+        </div>
+        <p class="mono gen-kopf">Artenanteil</p>
+        <div class="gen-arten" id="garten"></div>
+        <button type="button" class="btn" id="gneu">Neu würfeln <span class="arr">↻</span></button>
       </div>
     </div>
   </div>
@@ -96,24 +107,7 @@ input[type=range]{width:100%;margin:20px 0 6px;accent-color:var(--acc1)}
 <script>
 const D=window.DATEN;
 document.getElementById('profil').textContent=D.profil.split(". ")[0]+".";
-
-/* Raster-zu-Geste-Morphing: ein Linienfeld, das mit dem Regler "wackelt" */
-const cv=document.getElementById('cv'),rg=document.getElementById('rg');
-const N=12,S=600,R=rng(7),jit=[];
-for(let i=0;i<=N;i++){jit[i]=[];for(let j=0;j<=N;j++)jit[i][j]=[R()-.5,R()-.5]}
-function draw(){
-  const k=rg.value/100,st=S/N,amp=k*st*1.3;
-  const pt=(i,j)=>[i*st+jit[i][j][0]*amp,j*st+jit[i][j][1]*amp];
-  let d="";
-  for(let j=0;j<=N;j++){let p=pt(0,j);d+=`M${p[0].toFixed(1)} ${p[1].toFixed(1)}`;
-    for(let i=1;i<=N;i++){const a=pt(i-1,j),b=pt(i,j),m=[(a[0]+b[0])/2,(a[1]+b[1])/2+k*10*(jit[i][j][0])];d+=` Q${m[0].toFixed(1)} ${m[1].toFixed(1)} ${b[0].toFixed(1)} ${b[1].toFixed(1)}`}}
-  for(let i=0;i<=N;i++){let p=pt(i,0);d+=`M${p[0].toFixed(1)} ${p[1].toFixed(1)}`;
-    for(let j=1;j<=N;j++){const a=pt(i,j-1),b=pt(i,j),m=[(a[0]+b[0])/2+k*10*(jit[i][j][1]),(a[1]+b[1])/2];d+=` Q${m[0].toFixed(1)} ${m[1].toFixed(1)} ${b[0].toFixed(1)} ${b[1].toFixed(1)}`}}
-  const blob=`<circle cx="${S*.62}" cy="${S*.4}" r="${S*(.1+k*.14)}" fill="#F6D44A" fill-opacity="${.35+k*.5}"/><rect x="${S*.18}" y="${S*.5}" width="${S*.28}" height="${S*.28}" fill="#3E8A4F" fill-opacity="${.3+k*.4}" transform="rotate(${k*28} ${S*.32} ${S*.64})"/>`;
-  cv.innerHTML=`<svg viewBox="0 0 ${S} ${S}">${blob}<path d="${d}" fill="none" stroke="#111" stroke-width="${1.2+k*1.2}" stroke-linecap="round"/></svg>`;
-}
-rg.addEventListener('input',draw);draw();
-
 </script>
+<script src="generator.js"></script>
 </body>
 </html>
