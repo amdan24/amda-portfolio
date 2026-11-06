@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Werdegang · Daniel Amon</title>
+<meta name="description" content="Werdegang von Daniel Amon: Stationen, Fähigkeiten und Zertifikate.">
+<meta name="theme-color" content="#EFEAE0">
+<link rel="canonical" href="https://amda.work/werdegang.html">
+<meta property="og:title" content="Werdegang · Daniel Amon">
+<meta property="og:description" content="Werdegang von Daniel Amon: Stationen, Fähigkeiten und Zertifikate.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://amda.work/werdegang.html">
+<meta property="og:locale" content="de_AT">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="schriften.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="collage.css">
+<style>
+.hero2{padding-top:130px;display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(12px,2vw,28px);align-items:end}
+.portrait{grid-column:1/6;aspect-ratio:4/5;background:#cfcfcb;position:relative;overflow:hidden;filter:grayscale(1) contrast(1.05)}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block;position:relative;z-index:1}
+.portrait .ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#555;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:20px;background:
+ radial-gradient(circle at 50% 38%,#9a9a96 0 14%,transparent 14.5%),radial-gradient(ellipse at 50% 100%,#8a8a86 0 40%,transparent 40.5%),#d6d6d2}
+.portrait .ph span{position:absolute;bottom:14px;left:0;right:0}
+.intro{grid-column:7/13;padding-bottom:10px}
+@media(max-width:800px){.portrait,.intro{grid-column:1/-1}}
+/* Raster ↔ Geste */
+.morph{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(12px,2vw,28px);align-items:center}
+.morph .cv{grid-column:1/8;aspect-ratio:1;border:1px solid var(--ink);background:#f2efe8}
+.morph .cv svg{width:100%;height:100%;display:block}
+.morph .ctl{grid-column:8/13}
+@media(max-width:800px){.morph .cv,.morph .ctl{grid-column:1/-1}}
+input[type=range]{width:100%;margin:20px 0 6px;accent-color:var(--acc1)}
+.ends{display:flex;justify-content:space-between}
+.tl{border-top:1px solid var(--ink)}
+.tl .row{display:grid;grid-template-columns:120px 1fr 200px;gap:20px;padding:20px 0;border-bottom:1px solid var(--line);transition:padding .4s,background .4s;align-items:baseline}
+.tl .row:hover{padding-left:16px;background:rgba(127,127,127,.07)}
+.tl .row b{font-weight:500;font-size:1.15rem;letter-spacing:-.01em}
+@media(max-width:700px){.tl .row{grid-template-columns:70px 1fr}.tl .row span:last-child{grid-column:2}}
+.top{padding-top:140px;padding-bottom:10px}.spalten{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2.4vw,40px);margin-top:30px}.spalten h3{font-size:1.3rem}@media(max-width:900px){.spalten{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+<div class="wrap top wd-kopf">
+  <img class="wd-deko" src="bilder/trockenrasen.webp" alt="" width="1500" height="1784">
+  <p class="mono">Werdegang</p>
+  <h1 class="display" style="margin:16px 0 20px">Vom Handwerk<br>zur Landschaft.</h1>
+  <p class="lead" id="profil"></p>
+</div>
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head mono"><span>01 / Stationen</span><span>Aus dem Lebenslauf</span></div>
+    <div class="tl" id="tl"></div>
+  </div>
+</section>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head mono"><span>02 / Können</span><span>Fähigkeiten und Zertifikate</span></div>
+    <div class="rule"></div>
+    <div class="spalten">
+      <div class="rv"><h3>Stärken aus der Praxis</h3><ul class="marken" id="staerken"></ul></div>
+      <div class="rv"><h3>Digitales und Kreatives</h3><ul class="marken" id="digital"></ul></div>
+      <div class="rv"><h3>Zertifikate</h3><ul class="marken" id="zert"></ul><h3 style="margin-top:26px">Sprachen</h3><p id="sprachen" style="margin-top:8px"></p></div>
+    </div>
+    <br><br><a class="btn" href="kontakt.html">Kontakt aufnehmen <span class="arr">→</span></a>
+  </div>
+</section>
+</main>
+<script src="daten.js"></script>
+<script src="main.js"></script>
+<script>
+const D=window.DATEN;
+document.getElementById('profil').textContent=D.profil.split(". ")[0]+".";
+document.getElementById('tl').innerHTML=D.stationen.map(s=>`<div class="row rv"><span class="mono">${s.zeit}</span><b>${s.titel}</b><span class="mono">${s.ort}</span></div>`).join("");
+const li=a=>a.map(t=>`<li>${t}</li>`).join("");
+document.getElementById('staerken').innerHTML=li(D.staerken);
+document.getElementById('digital').innerHTML=li(D.digital);
+document.getElementById('zert').innerHTML=li(D.zert_technik.concat(D.zert_orga));
+document.getElementById('sprachen').textContent=D.sprachen;
+</script>
+</body>
+</html>

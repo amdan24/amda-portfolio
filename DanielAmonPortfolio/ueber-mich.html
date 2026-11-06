@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Über mich · Daniel Amon</title>
+<meta name="description" content="Daniel Amon: Student der Landschaftsplanung, Praxis in Garten, Technik und Organisation.">
+<meta name="theme-color" content="#EFEAE0">
+<link rel="canonical" href="https://amda.work/ueber-mich.html">
+<meta property="og:title" content="Über mich · Daniel Amon">
+<meta property="og:description" content="Daniel Amon: Student der Landschaftsplanung, Praxis in Garten, Technik und Organisation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://amda.work/ueber-mich.html">
+<meta property="og:locale" content="de_AT">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="schriften.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="collage.css">
+<style>
+.hero2{padding-top:130px;display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(12px,2vw,28px);align-items:end}
+.portrait{grid-column:1/6;aspect-ratio:4/5;background:#cfcfcb;position:relative;overflow:hidden;}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block;position:relative;z-index:1}
+.portrait .ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#555;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:20px;background:
+ radial-gradient(circle at 50% 38%,#9a9a96 0 14%,transparent 14.5%),radial-gradient(ellipse at 50% 100%,#8a8a86 0 40%,transparent 40.5%),#d6d6d2}
+.portrait .ph span{position:absolute;bottom:14px;left:0;right:0}
+.intro{grid-column:7/13;padding-bottom:10px}
+@media(max-width:800px){.portrait,.intro{grid-column:1/-1}}
+/* Raster ↔ Geste */
+.morph{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(12px,2vw,28px);align-items:center}
+.morph .cv{grid-column:1/8;aspect-ratio:1;border:1px solid var(--ink);background:#f2efe8}
+.morph .cv svg{width:100%;height:100%;display:block}
+.morph .ctl{grid-column:8/13}
+@media(max-width:800px){.morph .cv,.morph .ctl{grid-column:1/-1}}
+input[type=range]{width:100%;margin:20px 0 6px;accent-color:var(--acc1)}
+.ends{display:flex;justify-content:space-between}
+.tl{border-top:1px solid var(--ink)}
+.tl .row{display:grid;grid-template-columns:120px 1fr 200px;gap:20px;padding:20px 0;border-bottom:1px solid var(--line);transition:padding .4s,background .4s;align-items:baseline}
+.tl .row:hover{padding-left:16px;background:rgba(127,127,127,.07)}
+.tl .row b{font-weight:500;font-size:1.15rem;letter-spacing:-.01em}
+@media(max-width:700px){.tl .row{grid-template-columns:70px 1fr}.tl .row span:last-child{grid-column:2}}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,2vw,28px)}
+.pillars div{border-top:1px solid var(--ink);padding-top:16px}
+.pillars h3{font-size:1.5rem;margin:8px 0 10px}
+@media(max-width:800px){.pillars{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+<div class="wrap">
+  <div class="hero2">
+    <div class="portrait rv"><img src="foto.jpg" alt="Porträt von Daniel Amon"></div>
+    <div class="intro rv">
+      <p class="mono">Daniel Amon</p>
+      <h1 class="display" style="font-size:clamp(2.6rem,6.4vw,6.4rem);margin:14px 0 24px">Ich plane<br>mit Erde<br>an den Händen.</h1>
+      <p class="lead" id="profil"></p>
+    </div>
+  </div>
+</div>
+<section>
+  <div class="wrap">
+    <div class="sec-head mono"><span>01 / Haltung</span><span>Wie Praxis und Planung einander prüfen</span></div>
+    <div class="rule"></div><br><br>
+    <div class="haltung"><figure class="blatt-panel rv"><img src="bilder/blatt.jpg" alt="Getrocknete Königskerzenblätter vor hellem Grund" loading="lazy" width="1300" height="1741"></figure>
+    <div class="pillars">
+      <div class="rv"><p class="mono">I</p><h3>Beobachten</h3><p class="body">Ob eine Pflanze am richtigen Standort gedeiht, zeigt sich oft erst nach einer Saison. Genau diese Beobachtung macht für mich den Reiz aus.</p></div>
+      <div class="rv"><p class="mono">II</p><h3>Selber machen</h3><p class="body">Hochbeete, Pflaster, Beleuchtung: Ich arbeite mit vorhandenen Materialien und lerne am fertigen Ding, was der Plan nicht verrät.</p></div>
+      <div class="rv"><p class="mono">III</p><h3>Systematisch denken</h3><p class="body">Organisation, Dokumentation und Prozessdenken aus zwanzig Jahren Berufspraxis, jetzt mit QGIS und Planungsmethodik verbunden.</p></div>
+    </div></div>
+  </div>
+</section>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head mono"><span>02 / Pflanzgenerator</span><span>Interaktiv</span></div>
+    <div class="rule"></div><br><br>
+    <div class="gen">
+      <div class="gen-feld rv"><svg id="gsvg" viewBox="0 0 600 600" role="img" aria-label="Zufällig erzeugte Pflanzung"></svg><p class="gen-info mono" id="ginfo"></p></div>
+      <div class="gen-reg rv">
+        <h2 class="gen-tit"><span class="g">Pflanz</span><em class="s">dir was.</em></h2>
+        <p class="body">Vom strengen Raster zur gewachsenen Gesellschaft: Arten mischen, Dichte und Streuung ändern, die Zeit laufen lassen. Jeder Wurf ist neu.</p>
+        <div class="gen-pre" id="gpre"></div>
+        <div class="gen-gr">
+          <label>Zeit<span class="mono">Experiment → Zeit übernimmt</span><input type="range" id="gt" min="0" max="100" value="30"></label>
+          <label>Dichte<span class="mono">leer → dicht</span><input type="range" id="gd" min="5" max="100" value="55"></label>
+          <label>Raster ↔ Geste<span class="mono">Plan → gewachsen</span><input type="range" id="gs" min="0" max="100" value="35"></label>
+          <label>Gruppenbildung<span class="mono">verstreut → Flecken</span><input type="range" id="gk" min="0" max="100" value="30"></label>
+          <label>Größenvielfalt<span class="mono">einheitlich → wild</span><input type="range" id="gv" min="0" max="100" value="50"></label>
+        </div>
+        <p class="mono gen-kopf">Artenanteil</p>
+        <div class="gen-arten" id="garten"></div>
+        <button type="button" class="btn" id="gneu">Neu würfeln <span class="arr">↻</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head mono"><span>03 / Weiter</span><span>Mehr von mir</span></div>
+    <div class="rule"></div><br>
+    <a class="btn" href="werdegang.html">Werdegang <span class="arr">→</span></a>&nbsp;
+    <a class="btn" href="sehen.html">Wie ich sehe <span class="arr">→</span></a>&nbsp;
+    <a class="btn" href="kontakt.html">Kontakt <span class="arr">→</span></a>
+  </div>
+</section>
+</main>
+<script src="daten.js"></script>
+<script src="main.js"></script>
+<script>
+const D=window.DATEN;
+document.getElementById('profil').textContent=D.profil.split(". ")[0]+".";
+</script>
+<script src="generator.js"></script>
+</body>
+</html>

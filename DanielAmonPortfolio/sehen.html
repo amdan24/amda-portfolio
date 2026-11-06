@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sehen · Daniel Amon</title>
+<meta name="description" content="Wie Daniel Amon sieht: Wildwuchs, Steine, Blattmaserung, Farben und Naturmaterial als Inspiration.">
+<meta name="theme-color" content="#EFEAE0">
+<link rel="canonical" href="https://amda.work/sehen.html">
+<meta property="og:title" content="Sehen · Daniel Amon">
+<meta property="og:description" content="Wie Daniel Amon sieht: Wildwuchs, Steine, Blattmaserung, Farben und Naturmaterial als Inspiration.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://amda.work/sehen.html">
+<meta property="og:locale" content="de_AT">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="schriften.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="collage.css">
+<style>
+
+.top{padding-top:140px;padding-bottom:30px}
+.zitat{padding:clamp(60px,10vw,140px) 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);margin-top:50px}
+.zitat blockquote{font-family:var(--kopf);font-weight:800;font-size:clamp(1.8rem,5vw,4.2rem);line-height:1.04;letter-spacing:-.035em;max-width:20em}
+.zitat figcaption{margin-top:24px}
+.blicke{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,30px)}
+@media(max-width:900px){.blicke{grid-template-columns:1fr}}
+.blick{position:relative;aspect-ratio:4/3;overflow:hidden;cursor:none;background:#fff;--mx:50%;--my:50%;--r:0px;user-select:none;-webkit-user-select:none;touch-action:pan-y}
+.blick .ebene{position:absolute;inset:0}
+.blick .art>svg{display:block;width:100%;height:100%}
+.blick .a .art{filter:grayscale(1) contrast(.8) brightness(1.18)}
+.blick .b{clip-path:circle(var(--r) at var(--mx) var(--my))}
+.blick .t{position:absolute;left:14px;right:14px;bottom:12px;font:400 clamp(1.25rem,2.2vw,1.6rem)/1.15 var(--hand)}
+.blick .t span{display:inline-block;padding:.2rem .8rem;border-radius:1rem;background:rgba(255,255,255,.93);color:var(--tinte)}
+.blick .b .t span{background:var(--tinte);color:#fff}
+.blick .ring{position:absolute;left:var(--mx);top:var(--my);width:calc(var(--r)*2);height:calc(var(--r)*2);transform:translate(-50%,-50%);border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1.5px var(--tinte),0 10px 26px rgba(22,24,22,.25);pointer-events:none}
+@media(hover:none){.blick{cursor:auto}}
+.blick-text{margin-top:12px;font-size:.95rem;max-width:30em;opacity:.85}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(12px,2vw,28px);margin-top:30px}
+.card{grid-column:span 3;position:relative}
+.card .tile{aspect-ratio:4/5}
+.card .meta{display:flex;justify-content:space-between;gap:10px;padding-top:10px}
+.card .meta b{font-weight:500;letter-spacing:-.01em}
+.card.hide{display:none}
+@media(max-width:900px){.card{grid-column:span 6}}
+@media(max-width:500px){.card{grid-column:1/-1}}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 10px}
+.f{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;padding:10px 18px;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer;transition:all .3s}
+.f:hover{border-color:var(--ink)}
+.f.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.farben{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,1.6vw,22px);margin-top:20px}
+.farben div{min-width:0;overflow:hidden;aspect-ratio:3/5;border-radius:3px;display:flex;flex-direction:column;justify-content:flex-end;padding:14px;color:#fff;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.farben div:nth-child(2){margin-top:30px}.farben div:nth-child(4){margin-top:56px}
+.farben div:hover{transform:translateY(-10px)}
+.farben b{font-family:var(--kopf);font-size:1.2rem;letter-spacing:-.02em}
+.farben span{font-family:var(--mono);font-size:.68rem;opacity:.8}
+@media(max-width:600px){.farben{grid-template-columns:repeat(2,minmax(0,1fr))}.farben div:nth-child(n){margin-top:0;aspect-ratio:1}}
+.zwei{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(12px,2vw,28px);align-items:center}
+.zwei .txt{grid-column:1/6}.zwei .bild{grid-column:7/13}.zwei .bild-l{grid-column:1/7}.zwei .txt-r{grid-column:8/13}
+.zwei .tile{aspect-ratio:4/3}
+@media(max-width:800px){.zwei .txt,.zwei .bild,.zwei .bild-l,.zwei .txt-r{grid-column:1/-1}}
+
+</style>
+</head>
+<body>
+<main>
+<div class="wrap top">
+  <p class="mono">Sehen · Inspiration</p>
+  <h1 class="display" style="margin:16px 0 20px">Ich sehe,<br>was da wächst.</h1>
+  <p class="lead">Meine Inspiration kommt aus dem Alltag, aus dem genauen Hinschauen. Hier sammle ich, was mir dabei auffällt.</p>
+  <div class="streifen rv" aria-hidden="true"><i style="--h:78%;background-image:url(bilder/pflanzen.jpg);background-position:30% 25%"></i><i style="--h:100%;background-image:url(bilder/blatt-makro.jpg);background-position:18% 50%"></i><i style="--h:68%;background-image:url(bilder/hohlweg.jpg);background-position:52% 60%"></i><i style="--h:90%;background-image:url(bilder/praxis-lupe.jpg);background-position:20% 85%"></i><i style="--h:84%;background-image:url(bilder/blatt.jpg);background-position:50% 35%"></i><i style="--h:100%;background-image:url(bilder/blatt-makro.jpg);background-position:85% 40%"></i><i style="--h:72%;background-image:url(bilder/praxis-lupe.jpg);background-position:78% 90%"></i><i style="--h:92%;background-image:url(bilder/pflanzen.jpg);background-position:80% 78%"></i><i style="--h:76%;background-image:url(bilder/hohlweg.jpg);background-position:85% 30%"></i></div>
+  <figure class="zitat rv"><blockquote>„Kunst gibt nicht das Sichtbare wieder, sondern macht sichtbar.“</blockquote><figcaption class="mono">Paul Klee · Schöpferische Konfession, 1920</figcaption></figure>
+</div>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head mono"><span>00 / Schnappschüsse</span><span>So denke und sehe ich</span></div>
+    <div class="rule"></div><br>
+    <h2 class="h2 sn-kopf"><span class="g">Festgehalten,</span><em class="s">was ich sehe.</em></h2>
+    <div class="schnapp"><figure class="sn sn1 rv"><div class="sn-bild"><img src="bilder/schnappschuesse/01.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('leer');this.remove()"><span class="sn-leer mono">Foto folgt</span></div><figcaption><span class="mono">01</span><b>Beobachtet</b><em>Was mir auf dem Weg auffällt.</em></figcaption></figure><figure class="sn sn2 rv"><div class="sn-bild"><img src="bilder/schnappschuesse/02.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('leer');this.remove()"><span class="sn-leer mono">Foto folgt</span></div><figcaption><span class="mono">02</span><b>Festgehalten</b><em>Ein Detail, das ich nicht vergessen will.</em></figcaption></figure><figure class="sn sn3 rv"><div class="sn-bild"><img src="bilder/schnappschuesse/03.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('leer');this.remove()"><span class="sn-leer mono">Foto folgt</span></div><figcaption><span class="mono">03</span><b>Gedacht</b><em>Wie ich es mir als Garten vorstelle.</em></figcaption></figure><figure class="sn sn4 rv"><div class="sn-bild"><img src="bilder/schnappschuesse/04.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('leer');this.remove()"><span class="sn-leer mono">Foto folgt</span></div><figcaption><span class="mono">04</span><b>Gefunden</b><em>Material, das schon da ist.</em></figcaption></figure><figure class="sn sn5 rv"><div class="sn-bild"><img src="bilder/schnappschuesse/05.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('leer');this.remove()"><span class="sn-leer mono">Foto folgt</span></div><figcaption><span class="mono">05</span><b>Gesehen</b><em>Licht, Schatten, Struktur.</em></figcaption></figure><figure class="sn sn6 rv"><div class="sn-bild"><img src="bilder/schnappschuesse/06.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('leer');this.remove()"><span class="sn-leer mono">Foto folgt</span></div><figcaption><span class="mono">06</span><b>Gemerkt</b><em>Was ich daraus mitnehme.</em></figcaption></figure></div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <div class="sec-head mono"><span>01 / Zwei Blicke</span><span>Fahre mit der Lupe über die Bilder</span></div>
+    <div class="rule"></div><br><br>
+    <div class="blicke"><div class="rv"><div class="blick" data-spec="wild:3"><div class="ebene a"><div class="art" data-art="wild:3" style="position:absolute;inset:0"></div><div class="t"><span>Eine Grube. Irgendein Unkraut.</span></div></div><div class="ebene b" aria-hidden="true"><div class="art" data-art="wild:3" style="position:absolute;inset:0"></div><div class="t"><span>Schafgarbe, Beifuß, Gräser.</span></div></div><div class="ring" aria-hidden="true"></div></div><p class="blick-text">Ein Graben mit Wildwuchs: Andere sehen eine Grube, in der irgendein Unkraut wächst. Ich sehe Schafgarbe, Beifuß und verschiedene Gräser.</p></div><div class="rv"><div class="blick" data-spec="stein:5"><div class="ebene a"><div class="art" data-art="stein:5" style="position:absolute;inset:0"></div><div class="t"><span>Schotter. Grober Kies.</span></div></div><div class="ebene b" aria-hidden="true"><div class="art" data-art="stein:5" style="position:absolute;inset:0"></div><div class="t"><span>Kleine Steine mit Mustern.</span></div></div><div class="ring" aria-hidden="true"></div></div><p class="blick-text">Auf dem Boden liegt grober Schotter. Ich sehe kleine Steine mit faszinierenden Mustern, nehme sie mit und fotografiere sie.</p></div><div class="rv"><div class="blick" data-spec="blatt:7"><div class="ebene a"><div class="art" data-art="blatt:7" style="position:absolute;inset:0"></div><div class="t"><span>Ein grünes Blatt.</span></div></div><div class="ebene b" aria-hidden="true"><div class="art" data-art="blatt:7" style="position:absolute;inset:0"></div><div class="t"><span>Eine Maserung wie eine Karte.</span></div></div><div class="ring" aria-hidden="true"></div></div><p class="blick-text">Blätter mit spannender Maserung: Ich sehe die Adern und fotografiere sie.</p></div></div>
+  </div>
+</section>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head mono"><span>02 / Sammlung</span><span>Platzhalter · Fotos folgen</span></div>
+    <div class="rule"></div>
+    <div class="filters" id="filters"><button class="f on" data-f="all">Alle</button><button class="f" data-f="Steine">Steine</button><button class="f" data-f="Blätter">Blätter</button><button class="f" data-f="Schnappschüsse">Schnappschüsse</button><button class="f" data-f="Malerei">Malerei</button><button class="f" data-f="Arrangements">Arrangements</button></div>
+    <div class="grid" id="grid"><div class="card rv in" data-c="Steine"><div class="tile" data-art="stein:11" data-bild="bilder/sehen-01.jpg"></div><div class="meta"><b>Stein mit Bänderung</b><span class="mono">Steine</span></div></div><div class="card rv in" data-c="Steine"><div class="tile" data-art="stein:12" data-bild="bilder/sehen-02.jpg"></div><div class="meta"><b>Kies, genau betrachtet</b><span class="mono">Steine</span></div></div><div class="card rv in" data-c="Steine"><div class="tile" data-art="stein:13" data-bild="bilder/sehen-03.jpg"></div><div class="meta"><b>Mitgenommen vom Weg</b><span class="mono">Steine</span></div></div><div class="card rv in" data-c="Blätter"><div class="tile" data-art="blatt:21" data-bild="bilder/sehen-04.jpg"></div><div class="meta"><b>Blattmaserung I</b><span class="mono">Blätter</span></div></div><div class="card rv in" data-c="Blätter"><div class="tile" data-art="blatt:22" data-bild="bilder/sehen-05.jpg"></div><div class="meta"><b>Blattmaserung II</b><span class="mono">Blätter</span></div></div><div class="card rv in" data-c="Blätter"><div class="tile" data-art="blatt:23" data-bild="bilder/sehen-06.jpg"></div><div class="meta"><b>Blatt im Gegenlicht</b><span class="mono">Blätter</span></div></div><div class="card rv in" data-c="Schnappschüsse"><div class="tile" data-art="wild:31" data-bild="bilder/sehen-07.jpg"></div><div class="meta"><b>Graben im Spätsommer</b><span class="mono">Schnappschüsse</span></div></div><div class="card rv in" data-c="Schnappschüsse"><div class="tile" data-art="wild:32" data-bild="bilder/sehen-08.jpg"></div><div class="meta"><b>Wiese am Weinberg</b><span class="mono">Schnappschüsse</span></div></div><div class="card rv in" data-c="Malerei"><div class="tile" data-art="mal:41" data-bild="bilder/sehen-09.jpg"></div><div class="meta"><b>Abstrakt, Erdtöne</b><span class="mono">Malerei</span></div></div><div class="card rv in" data-c="Malerei"><div class="tile" data-art="mal:42" data-bild="bilder/sehen-10.jpg"></div><div class="meta"><b>Abstrakt, Linien und Fläche</b><span class="mono">Malerei</span></div></div><div class="card rv in" data-c="Arrangements"><div class="tile" data-art="arr:51" data-bild="bilder/sehen-11.jpg"></div><div class="meta"><b>Alte Ziegel und Balken</b><span class="mono">Arrangements</span></div></div><div class="card rv in" data-c="Arrangements"><div class="tile" data-art="arr:52" data-bild="bilder/sehen-12.jpg"></div><div class="meta"><b>Holz, Stein, Pflanze</b><span class="mono">Arrangements</span></div></div></div>
+  </div>
+</section>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head mono"><span>03 / Farben</span><span>Vorläufige Werte</span></div>
+    <div class="rule"></div><br>
+    <div class="zwei"><div class="txt rv"><h2 class="h2">Farben, die<br>zusammenpassen.</h2><p class="lead" style="margin-top:18px">Holz, Nuss, Pfirsichkern, Kürbiskern: Diese Töne harmonieren, und ich kann sie in einem Bild festhalten.</p></div>
+    <div class="bild rv"><div class="farben"><div style="background:#B98B5E"><b>Holz</b><span>#B98B5E</span></div><div style="background:#6E4B33"><b>Nuss</b><span>#6E4B33</span></div><div style="background:#9A6A4C"><b>Pfirsichkern</b><span>#9A6A4C</span></div><div style="background:#7C8C4E"><b>Kürbiskern</b><span>#7C8C4E</span></div></div></div></div>
+  </div>
+</section>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head mono"><span>04 / Im Garten</span><span>Naturmaterial</span></div>
+    <div class="rule"></div><br>
+    <div class="zwei"><div class="bild-l rv"><div class="tile" data-art="arr:61" data-bild="bilder/sehen-13.jpg"></div></div>
+    <div class="txt-r rv"><h2 class="h2">Alt wird<br>Arrangement.</h2><p class="lead" style="margin-top:18px">Im Garten kombiniere ich gern Naturmaterial: alte Holzbalken, alte Ziegel. Oft ergibt sich dabei ein nettes Arrangement.</p><br><a class="btn" href="portfolio.html">Zu den Arbeiten <span class="arr">→</span></a></div></div>
+  </div>
+</section>
+</main>
+<script src="daten.js"></script>
+<script src="main.js"></script>
+<script src="blick.js"></script>
+<script>
+const g=document.getElementById('grid');
+fillTiles(document.querySelector('main'));
+document.getElementById('filters').addEventListener('click',ev=>{
+  const b=ev.target.closest('.f');if(!b)return;
+  document.querySelectorAll('.f').forEach(x=>x.classList.toggle('on',x===b));
+  g.querySelectorAll('.card').forEach(c=>c.classList.toggle('hide',!(b.dataset.f==='all'||c.dataset.c===b.dataset.f)));
+});
+</script>
+</body>
+</html>

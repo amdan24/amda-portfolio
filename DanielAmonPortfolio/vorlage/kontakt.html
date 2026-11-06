@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kontakt – Vorname Nachname</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.k{min-height:100vh;padding-top:140px;display:flex;flex-direction:column;justify-content:space-between}
+.kin{font-size:clamp(3.4rem,14vw,15rem);font-weight:500;letter-spacing:-.06em;line-height:.9;cursor:default;user-select:none}
+.kin span{display:inline-block;will-change:transform;transition:transform .25s cubic-bezier(.2,.7,.2,1),color .25s}
+.mail{display:inline-block;font-size:clamp(1.4rem,4vw,3.4rem);letter-spacing:-.03em;position:relative;margin:34px 0 10px}
+.mail::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:currentColor;transform:scaleX(1);transform-origin:right;transition:transform .6s cubic-bezier(.7,0,.2,1)}
+.mail:hover::after{animation:redraw .9s cubic-bezier(.7,0,.2,1)}
+@keyframes redraw{0%{transform:scaleX(1);transform-origin:right}49%{transform:scaleX(0);transform-origin:right}50%{transform:scaleX(0);transform-origin:left}100%{transform:scaleX(1);transform-origin:left}}
+.rows{border-top:1px solid var(--ink);margin-top:50px}
+.rows a{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid var(--line);font-size:1.3rem;letter-spacing:-.02em;transition:padding .4s,background .4s}
+.rows a:hover{padding-left:16px;padding-right:16px;background:var(--ink);color:var(--bg)}
+.rows a .mono{color:inherit;opacity:.6}
+.cta{margin:46px 0 90px;display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+</style>
+</head>
+<body>
+<main>
+<div class="wrap k">
+  <div>
+    <p class="mono">Kontakt</p>
+    <h1 class="kin" id="kin" aria-label="Sprechen wir.">Sprechen<br>wir.</h1>
+    <a class="mail" href="mailto:hallo@deinname.com">hallo@deinname.com</a>
+    <div class="rows">
+      <a href="#" ><span>Instagram</span><span class="mono">Kunst &amp; Prozess ↗</span></a>
+      <a href="#"><span>LinkedIn</span><span class="mono">Architektur &amp; Projekte ↗</span></a>
+    </div>
+    <div class="cta">
+      <a class="btn" href="mailto:hallo@deinname.com?subject=Gespr%C3%A4chsanfrage&body=Hallo%2C%20ich%20w%C3%BCrde%20mich%20gern%20mit%20dir%20austauschen%20%C3%BCber%3A%20">Gespräch anfragen <span class="arr">→</span></a>
+      <span class="mono">Antwort meist innerhalb von 2 Werktagen</span>
+    </div>
+  </div>
+</div>
+</main>
+<script src="main.js"></script>
+<script>
+/* Kinetische Typografie: Buchstaben weichen der Maus aus, Farbakzent in der Nähe */
+const kin=document.getElementById('kin');
+const html=kin.innerHTML.split('<br>').map(l=>[...l].map(c=>`<span>${c}</span>`).join('')).join('<br>');
+kin.innerHTML=html;
+const sp=[...kin.querySelectorAll('span')];
+const acc=['#e4572e','#2e6fe4','#f0b429'];
+addEventListener('mousemove',e=>{
+  sp.forEach((s,i)=>{
+    const r=s.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
+    const dx=e.clientX-cx,dy=e.clientY-cy,d=Math.hypot(dx,dy),R=220;
+    if(d<R){const f=(1-d/R);s.style.transform=`translate(${-dx/d*f*40}px,${-dy/d*f*40}px) rotate(${f*(dx>0?-14:14)}deg)`;s.style.color=acc[i%3]}
+    else{s.style.transform='';s.style.color=''}
+  });
+});
+</script>
+</body>
+</html>

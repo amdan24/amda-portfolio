@@ -1,0 +1,6 @@
+Hier kommen die Bilder der Website hinein (werden mit auf GitHub gespeichert).
+Namen nach Reihenfolge im Portfolio: projekt-01.jpg bis projekt-12.jpg
+(1 Garten, 2 Hochbeete, 3 Pflaster, 4 Beleuchtung, 5 Obst/Kräuter, 6 GIS, 7 Freiraumentwurf,
+ 8 Weinberg, 9 Betriebssystem, 10 Websites, 11 Print-on-Demand, 12 Linienarbeiten)
+Format: JPG, Seitenverhältnis 4:5 hochkant am besten, ca. 1600 px breit, unter 400 KB.
+Fehlt eine Datei, zeigt die Seite die gezeichnete Platzhalter-Kachel.

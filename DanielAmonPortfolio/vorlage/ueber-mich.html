@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Über mich – Vorname Nachname</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.hero2{padding-top:130px;display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(12px,2vw,28px);align-items:end}
+.portrait{grid-column:1/6;aspect-ratio:4/5;background:#cfcfcb;position:relative;overflow:hidden;filter:grayscale(1) contrast(1.05)}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block;position:relative;z-index:1}
+.portrait .ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#555;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:20px;background:
+ radial-gradient(circle at 50% 38%,#9a9a96 0 14%,transparent 14.5%),radial-gradient(ellipse at 50% 100%,#8a8a86 0 40%,transparent 40.5%),#d6d6d2}
+.portrait .ph span{position:absolute;bottom:14px;left:0;right:0}
+.intro{grid-column:7/13;padding-bottom:10px}
+@media(max-width:800px){.portrait,.intro{grid-column:1/-1}}
+/* Raster ↔ Geste */
+.morph{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(12px,2vw,28px);align-items:center}
+.morph .cv{grid-column:1/8;aspect-ratio:1;border:1px solid var(--ink);background:#f2efe8}
+.morph .cv svg{width:100%;height:100%;display:block}
+.morph .ctl{grid-column:8/13}
+@media(max-width:800px){.morph .cv,.morph .ctl{grid-column:1/-1}}
+input[type=range]{width:100%;margin:20px 0 6px;accent-color:var(--acc1)}
+.ends{display:flex;justify-content:space-between}
+.tl{border-top:1px solid var(--ink)}
+.tl .row{display:grid;grid-template-columns:120px 1fr 200px;gap:20px;padding:20px 0;border-bottom:1px solid var(--line);transition:padding .4s,background .4s;align-items:baseline}
+.tl .row:hover{padding-left:16px;background:rgba(127,127,127,.07)}
+.tl .row b{font-weight:500;font-size:1.15rem;letter-spacing:-.01em}
+@media(max-width:700px){.tl .row{grid-template-columns:70px 1fr}.tl .row span:last-child{grid-column:2}}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,2vw,28px)}
+.pillars div{border-top:1px solid var(--ink);padding-top:16px}
+.pillars h3{font-size:1.5rem;margin:8px 0 10px}
+@media(max-width:800px){.pillars{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+<div class="wrap">
+  <div class="hero2">
+    <div class="portrait rv">
+      <div class="ph"><span>portrait.jpg hier ablegen</span></div>
+      <img src="portrait.jpg" alt="Porträt" onerror="this.remove()">
+    </div>
+    <div class="intro rv">
+      <p class="mono">The Maker</p>
+      <h1 class="display" style="font-size:clamp(2.8rem,7vw,7rem);margin:14px 0 24px">Ich zeichne,<br>damit Räume<br>entstehen.</h1>
+      <p class="lead">Architekt und Künstler. Ich glaube nicht an den Unterschied zwischen Entwurf und Experiment – nur an den Moment, in dem eines das andere korrigiert.</p>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head mono"><span>01 / Philosophie</span><span>Wie Kunst die Architektur formt – und umgekehrt</span></div>
+    <div class="rule"></div><br><br>
+    <div class="pillars">
+      <div class="rv"><p class="mono">I</p><h3>Raster als Haltung</h3><p class="body">Ordnung ist keine Einschränkung, sie ist der Rahmen, in dem Freiheit lesbar wird.</p></div>
+      <div class="rv"><p class="mono">II</p><h3>Geste als Prüfung</h3><p class="body">Jede Skizze stellt dem Plan eine Frage, die kein Programm vorhersieht.</p></div>
+      <div class="rv"><p class="mono">III</p><h3>Material als Gedächtnis</h3><p class="body">Beton, Papier, Pigment: Dinge speichern Zeit. Gute Räume tun es auch.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head mono"><span>02 / Zwischenraum</span><span>Interaktiv</span></div>
+    <div class="rule"></div><br><br>
+    <div class="morph">
+      <div class="cv rv" id="cv"></div>
+      <div class="ctl rv">
+        <h2 class="h2">Zieh am<br>Regler.</h2>
+        <p class="body" style="margin-top:16px">Links streng, rechts frei. Ich arbeite irgendwo dazwischen – und meistens an der Stelle, wo es kippt.</p>
+        <input type="range" id="rg" min="0" max="100" value="12">
+        <div class="ends mono"><span>Raster</span><span>Geste</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head mono"><span>03 / Meilensteine</span><span>Beispieldaten – bitte ersetzen</span></div>
+    <div class="tl">
+      <div class="row rv"><span class="mono">2025</span><b>Einzelausstellung „Zwischenraum“</b><span class="mono">Galerie, Ort</span></div>
+      <div class="row rv"><span class="mono">2024</span><b>Pavillon am Hang – Fertigstellung</b><span class="mono">Architektur</span></div>
+      <div class="row rv"><span class="mono">2023</span><b>Publikation in einem Architekturmagazin</b><span class="mono">Veröffentlichung</span></div>
+      <div class="row rv"><span class="mono">2022</span><b>Gruppenausstellung „Linie &amp; Fläche“</b><span class="mono">Kunstverein</span></div>
+      <div class="row rv"><span class="mono">2019</span><b>Diplom Architektur</b><span class="mono">Universität</span></div>
+    </div>
+    <br><br><a class="btn" href="kontakt.html">Gespräch anfragen <span class="arr">→</span></a>
+  </div>
+</section>
+</main>
+<script src="main.js"></script>
+<script>
+/* Raster-zu-Geste-Morphing: ein Linienfeld, das mit dem Regler "wackelt" */
+const cv=document.getElementById('cv'),rg=document.getElementById('rg');
+const N=12,S=600,R=rng(7),jit=[];
+for(let i=0;i<=N;i++){jit[i]=[];for(let j=0;j<=N;j++)jit[i][j]=[R()-.5,R()-.5]}
+function draw(){
+  const k=rg.value/100,st=S/N,amp=k*st*1.3;
+  const pt=(i,j)=>[i*st+jit[i][j][0]*amp,j*st+jit[i][j][1]*amp];
+  let d="";
+  for(let j=0;j<=N;j++){let p=pt(0,j);d+=`M${p[0].toFixed(1)} ${p[1].toFixed(1)}`;
+    for(let i=1;i<=N;i++){const a=pt(i-1,j),b=pt(i,j),m=[(a[0]+b[0])/2,(a[1]+b[1])/2+k*10*(jit[i][j][0])];d+=` Q${m[0].toFixed(1)} ${m[1].toFixed(1)} ${b[0].toFixed(1)} ${b[1].toFixed(1)}`}}
+  for(let i=0;i<=N;i++){let p=pt(i,0);d+=`M${p[0].toFixed(1)} ${p[1].toFixed(1)}`;
+    for(let j=1;j<=N;j++){const a=pt(i,j-1),b=pt(i,j),m=[(a[0]+b[0])/2+k*10*(jit[i][j][1]),(a[1]+b[1])/2];d+=` Q${m[0].toFixed(1)} ${m[1].toFixed(1)} ${b[0].toFixed(1)} ${b[1].toFixed(1)}`}}
+  const blob=`<circle cx="${S*.62}" cy="${S*.4}" r="${S*(.1+k*.14)}" fill="#e4572e" fill-opacity="${.35+k*.5}"/><rect x="${S*.18}" y="${S*.5}" width="${S*.28}" height="${S*.28}" fill="#2e6fe4" fill-opacity="${.3+k*.4}" transform="rotate(${k*28} ${S*.32} ${S*.64})"/>`;
+  cv.innerHTML=`<svg viewBox="0 0 ${S} ${S}">${blob}<path d="${d}" fill="none" stroke="#111" stroke-width="${1.2+k*1.2}" stroke-linecap="round"/></svg>`;
+}
+rg.addEventListener('input',draw);draw();
+</script>
+</body>
+</html>

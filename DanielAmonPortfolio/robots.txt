@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://amda.work/sitemap.xml
