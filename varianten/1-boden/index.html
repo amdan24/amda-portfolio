@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Daniel Amon · Variante 1: Bodenprofil</title>
+<meta name="description" content="Portfolio von Daniel Amon, Entwurf.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../schriften.css">
+<style>
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}}
+.sprung{position:absolute;left:-999px}.sprung:focus{left:12px;top:12px;background:#fff;color:#000;padding:8px 12px;z-index:99}
+
+:root{--papier:#EFEAE0;--tinte:#1E1A14;--o:#2B221B;--a:#4A372A;--b:#6E5238;--c:#CDBB90;--hell:#F5EEDF;--gruen:#B9D27A}
+body{font-family:'Montserrat',Arial,sans-serif;background:var(--papier);color:var(--tinte);line-height:1.55;-webkit-font-smoothing:antialiased}
+.mono{font-family:ui-monospace,'Cascadia Mono',Consolas,monospace;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase}
+h1,h2,h3{font-family:'Aileron','Helvetica Neue',Arial,sans-serif;font-weight:800;letter-spacing:-.035em;line-height:.98}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,56px)}
+header.top{position:fixed;inset:0 0 auto 0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:16px clamp(20px,5vw,56px);background:rgba(239,234,224,.88);backdrop-filter:blur(8px)}
+header.top b{font-family:'Aileron',Arial;font-weight:800;letter-spacing:-.03em}
+header.top nav{display:flex;gap:clamp(12px,2.4vw,28px)}
+header.top nav a{font-size:.8rem;font-weight:500}
+header.top nav a:hover{text-decoration:underline;text-underline-offset:5px}
+@media(max-width:640px){header.top nav a:nth-child(n+4){display:none}}
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:120px 0 90px}
+.hero h1{font-size:clamp(3.2rem,10.5vw,9.4rem);max-width:11em}
+.hero h1 em{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;letter-spacing:-.02em;color:#4E6B2A}
+.hero .satz{margin-top:clamp(24px,4vw,44px);font-size:clamp(1.1rem,1.9vw,1.6rem);max-width:30em}
+.hero .kicker{margin-bottom:22px;color:#6A664F}
+.hero .grube{margin-top:clamp(40px,7vw,90px);display:flex;gap:14px;align-items:center;color:#6A664F}
+.hero .grube i{display:block;width:1px;height:56px;background:currentColor;animation:senk 2.4s ease-in-out infinite}
+@keyframes senk{0%,100%{transform:scaleY(.3);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}}
+@media(prefers-reduced-motion:reduce){.hero .grube i{animation:none}}
+.band{display:grid;grid-template-columns:repeat(6,1fr);gap:0;height:clamp(150px,26vw,320px)}
+.band img{width:100%;height:100%;object-fit:cover}
+@media(max-width:700px){.band{grid-template-columns:repeat(3,1fr)}.band img:nth-child(n+4){display:none}}
+.horizont{padding:clamp(70px,11vw,150px) 0 clamp(60px,9vw,120px);position:relative}
+.horizont.o{background:var(--o);color:var(--hell)}
+.horizont.a{background:linear-gradient(180deg,var(--o) 0,var(--a) 14%,var(--a) 100%);color:var(--hell)}
+.horizont.b{background:linear-gradient(180deg,var(--a) 0,var(--b) 14%,var(--b) 100%);color:var(--hell)}
+.horizont.c{background:linear-gradient(180deg,var(--b) 0,var(--c) 18%,var(--c) 100%);color:var(--tinte)}
+.hz-kopf{display:grid;grid-template-columns:clamp(54px,14vw,170px) minmax(0,1fr);gap:clamp(16px,3vw,40px);align-items:end;margin-bottom:clamp(34px,6vw,70px)}
+.hz-buchstabe{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:clamp(5rem,15vw,13rem);line-height:.8;opacity:.9}
+.hz-kopf h2{font-size:clamp(1.6rem,5vw,4.2rem);overflow-wrap:break-word;hyphens:auto}
+.hz-kopf p.mono{opacity:.75;margin-bottom:10px}
+.hz-text{max-width:34em;margin-top:14px;opacity:.9}
+.dabei{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:clamp(40px,7vw,80px)}
+.dabei li{padding:18px;border:1px solid rgba(245,238,223,.22);border-radius:4px;background:rgba(245,238,223,.05);display:flex;flex-direction:column;gap:8px}
+.dabei h3{font-size:1.08rem;line-height:1.12}
+.dabei .tag{font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:99px;background:rgba(185,210,122,.18);color:var(--gruen);align-self:flex-start;margin-top:auto}
+.dabei .g{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;opacity:.65}
+@media(max-width:1000px){.dabei{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.dabei{grid-template-columns:1fr}}
+.fund{border-top:1px solid currentColor;border-color:rgba(245,238,223,.22)}
+.horizont.c .fund{border-color:rgba(30,26,20,.22)}
+.fund details{border-bottom:1px solid rgba(245,238,223,.22)}
+.horizont.c .fund details{border-color:rgba(30,26,20,.22)}
+.fund summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:clamp(110px,16vw,190px) 1fr 28px;gap:16px;align-items:baseline;padding:20px 0}
+.fund summary::-webkit-details-marker{display:none}
+.fund summary:hover h3{text-decoration:underline;text-underline-offset:6px}
+.fund h3{font-size:clamp(1.15rem,2vw,1.6rem);line-height:1.1}
+.fund .ort{display:block;font-size:.88rem;opacity:.75;margin-top:4px;font-family:'Montserrat';font-weight:400;letter-spacing:0}
+.fund .plus{font-size:1.4rem;line-height:1;transition:transform .3s}
+.fund details[open] .plus{transform:rotate(45deg)}
+.fund .zeit{opacity:.8}
+.fund .mehr{padding:0 0 24px clamp(126px,calc(16vw + 16px),206px);max-width:60em;font-size:.95rem}
+.fund .mehr ul{margin:10px 0 0 1.1em;list-style:disc}.fund .mehr li{margin:4px 0}.fund .mehr h4{margin:14px 0 4px}
+@media(max-width:640px){.fund summary{grid-template-columns:1fr 24px}.fund .zeit{grid-column:1/-1}.fund .mehr{padding-left:0}}
+.wurzel{background:#1D1712;color:var(--hell);padding:clamp(70px,10vw,130px) 0}
+.wurzel h2{font-size:clamp(2rem,5vw,4rem);margin-bottom:clamp(26px,4vw,48px)}
+.kann{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,3vw,40px)}
+.kann h3{font-size:1.1rem;margin-bottom:10px;color:var(--gruen)}
+.kann li{font-size:.93rem;margin:6px 0;opacity:.9}
+@media(max-width:900px){.kann{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.kann{grid-template-columns:1fr}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:clamp(28px,4vw,44px)}
+.chips li{padding:7px 14px;border:1px solid rgba(245,238,223,.28);border-radius:99px;font-size:.86rem}
+.kontakt{background:#1D1712;color:var(--hell);padding:0 0 clamp(50px,8vw,100px)}
+.kontakt .mail{display:inline-block;font-family:'Aileron',Arial;font-weight:800;letter-spacing:-.035em;font-size:clamp(1.8rem,6vw,4.8rem);border-bottom:2px solid var(--gruen);padding-bottom:4px;word-break:break-all}
+.kontakt .mail:hover{color:var(--gruen)}
+.kontakt p{margin-top:18px;opacity:.75}
+.tiefe{position:fixed;right:clamp(10px,2vw,24px);bottom:64px;z-index:30;padding:8px 12px;border-radius:6px;background:rgba(30,26,20,.86);color:var(--hell);display:flex;gap:10px;align-items:baseline;pointer-events:none}
+.tiefe b{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:1.3rem;min-width:1.2em}
+@media(max-width:640px){.tiefe{right:10px;bottom:62px}}
+
+.wechsler{position:fixed;left:10px;bottom:10px;z-index:90;display:flex;align-items:center;gap:4px;padding:5px;border-radius:999px;background:rgba(20,20,20,.9);color:#fff;font:600 .72rem/1 ui-monospace,Consolas,monospace;letter-spacing:.04em;box-shadow:0 4px 16px rgba(0,0,0,.3)}
+.wechsler a{display:grid;place-items:center;min-width:34px;height:34px;padding:0 8px;border-radius:999px;color:#fff;text-decoration:none}
+.wechsler a[aria-current=page]{background:#fff;color:#141414}
+.wechsler a.fav::after{content:"★";margin-left:3px;color:#E9C46A}
+.wechsler a[aria-current=page].fav::after{color:#B57F00}
+.wechsler .ue{padding:0 12px}
+
+</style>
+</head>
+<body>
+<a class="sprung" href="#dig">Zum Inhalt</a>
+<header class="top"><b>Daniel Amon</b><nav aria-label="Abschnitte"><a href="#oben">Anfang</a><a href="#jetzt">Jetzt</a><a href="#technik">Werdegang</a><a href="#kann">Können</a><a href="#kontakt">Kontakt</a></nav></header>
+<main>
+<section class="hero" id="oben"><div class="wrap">
+  <p class="kicker mono rv">Daniel Amon · Landschaftsplanung und Landschaftsarchitektur · BOKU Wien</p>
+  <h1 class="rv">Was oben wächst, <em>kommt von unten.</em></h1>
+  <p class="satz rv">Ich studiere Landschaftsplanung und bringe zwanzig Jahre Praxis in Technik, Handel und Betreuung mit.</p>
+  <p class="grube mono rv"><i></i> Weiter nach unten graben</p>
+</div></section>
+<div class="band" aria-hidden="true"><img src="../../bilder/sehen-08.jpg" alt="Weinberg im Dezember" loading="lazy"><img src="../../bilder/schnappschuesse/05.jpg" alt="Steilwand am Weinbergweg" loading="lazy"><img src="../../bilder/schnappschuesse/03.jpg" alt="Garten im Mai" loading="lazy"><img src="../../bilder/sehen-03.jpg" alt="Iris im hohen Gras" loading="lazy"><img src="../../bilder/sehen-12.jpg" alt="Hochbeet im August" loading="lazy"><img src="../../bilder/schnappschuesse/06.jpg" alt="Raureif-Weg" loading="lazy"></div>
+<div id="dig"></div>
+<section class="horizont o" id="jetzt" data-h="O-Horizont" data-lo="0" data-hi="5" aria-labelledby="jetzt-t"><div class="wrap"><div class="hz-kopf rv"><span class="hz-buchstabe" aria-hidden="true">O</span><div><p class="mono">Auflage · 0 – 5 cm · seit 2024</p><h2 id="jetzt-t">Jetzt</h2><p class="hz-text">Heute laufen drei Dinge nebeneinander: das Studium, die eigene Selbstständigkeit und die Betreuungsarbeit in Krems. Jedes davon prägt, wie ich plane und wie ich mit Menschen arbeite.</p></div></div><ul class="dabei"><li class="rv"><span class="g">Studium</span><h3>Darstellungsmethoden und freies Zeichnen</h3><span class="tag">Wintersemester 2026/27</span></li><li class="rv"><span class="g">Studium</span><h3>Geologie, Klimatologie und Bodenkunde</h3><span class="tag">Wintersemester 2026/27</span></li><li class="rv"><span class="g">Studium</span><h3>Landscape Theories and Landscape Planning</h3><span class="tag">Wintersemester 2026/27</span></li><li class="rv"><span class="g">Entwicklung</span><h3>Pflanzenplanung als Web-Anwendung (SaaS)</h3><span class="tag">Im Aufbau</span></li><li class="rv"><span class="g">Entwicklung</span><h3>Betriebssystem für die Selbstständigkeit</h3><span class="tag">Laufend</span></li><li class="rv"><span class="g">Entwicklung</span><h3>GIS-Portfolio</h3><span class="tag">Im Aufbau</span></li><li class="rv"><span class="g">Garten und Bau</span><h3>Glashaus aus gebrauchten Fenstern</h3><span class="tag">In Planung</span></li><li class="rv"><span class="g">Soziales</span><h3>Betreuung im Verein gegen Wohnungslosigkeit</h3><span class="tag">Laufend</span></li></ul><div class="fund"><details class="rv"><summary><span class="zeit mono">01/2026 – heute</span><h3>Studium Landschaftsplanung und Landschaftsarchitektur<span class="ort">Universität für Bodenkultur Wien (BOKU)</span></h3><span class="plus" aria-hidden="true">+</span></summary><div class="mehr"><p>Bisher Schwerpunkte in Landschaftsplanung, Naturschutzplanung sowie Vegetations- und Landschaftsökologie; dazu zeichnerische Darstellung, Planungsmethodik, Boden- und Klimakunde und erste Grundlagen in GIS und CAD.</p><h4>Wintersemester 2026/27, laufend</h4><ul><li>Darstellungsmethoden und freies Zeichnen</li><li>Geologie, Klimatologie und Bodenkunde</li><li>Humanökologie</li><li>Einführung in Büroorganisation, Projektabwicklung und Ausschreibungssoftware</li><li>Landscape Theories and Landscape Planning</li><li>Planungstheorie und Planungsmethodik</li></ul><h4>Sommersemester 2026, abgeschlossen</h4><ul><li>Einführung in Landschaftsarchitektur und Landschaftsbau</li><li>Einführung in Landschaftsplanung und Naturschutzplanung</li><li>Grundlagen der Land- und Forstwirtschaft</li><li>Grundlagen des Rechts</li><li>Naturschutzplanung und Landschaftspflege</li><li>Orientierungslehrveranstaltung</li><li>Systematik und Ökologie der Pflanzen</li><li>Tierökologie, Landschaftsökologie, Hydrobiologie</li><li>Vegetationsökologie für Landschaftsplanung</li></ul><h4>Praxis</h4><ul><li>Exkursion zu Land- und Forstwirtschaft mit ersten Einblicken in die Biotopkartierung</li></ul></div></details><details class="rv"><summary><span class="zeit mono">10/2025 – heute</span><h3>Selbstständig: Print-on-Demand, digitale Produkte und Online-Projekte<span class="ort">Freies Gewerbe</span></h3><span class="plus" aria-hidden="true">+</span></summary><div class="mehr"><p>Ich konzipiere und betreue eigene Print-on-Demand-Shops, baue Social-Media-Kanäle auf und entwickle digitale Produkte. Für die eigenen Geschäftsbereiche habe ich mit KI-Unterstützung eine Software für Geldflüsse, Rechnungen und Buchhaltung entwickelt.</p><ul><li>Eigene Print-on-Demand-Shops inklusive Design, Produktseiten und Online-Auftritt</li><li>Aufbau von Social-Media-Kanälen mit redaktionellen Inhalten</li><li>Entwicklung digitaler Produkte und Geschäftsprozesse</li><li>Eigene Software zur Verwaltung von Geschäftsbereichen, Geldflüssen, Rechnungen und Buchhaltung</li></ul></div></details><details class="rv"><summary><span class="zeit mono">06/2024 – heute</span><h3>Freier Dienstnehmer auf Honorarbasis<span class="ort">Verein gegen Wohnungslosigkeit · Krems an der Donau</span></h3><span class="plus" aria-hidden="true">+</span></summary><div class="mehr"><p>Seit über zwei Jahren begleite und aktiviere ich Bewohner:innen im Alltag und in Gruppenangeboten, konzipiere Freizeitaktivitäten und Ausflüge und dokumentiere meine Dienste sorgfältig.</p><ul><li>Gruppen von 1 bis 12 Personen; Aktivitäten passe ich an Interessen, Fähigkeiten und Möglichkeiten an</li><li>Motivation zur Teilnahme an gemeinsamen Spielen, Mahlzeiten und Unternehmungen</li><li>Verantwortung für einen respektvollen, sicheren und strukturierten Tagesablauf</li><li>Konstruktive Mitarbeit in Teambesprechungen</li></ul></div></details></div></div></section><section class="horizont a" id="neuanfang" data-h="A-Horizont" data-lo="5" data-hi="30" aria-labelledby="neuanfang-t"><div class="wrap"><div class="hz-kopf rv"><span class="hz-buchstabe" aria-hidden="true">A</span><div><p class="mono">Oberboden · 5 – 30 cm · 2022 – 2025</p><h2 id="neuanfang-t">Neuorientierung</h2><p class="hz-text">2022 begann ich, meinen Weg neu zu denken: Stärken analysieren, die Studienberechtigung nachholen, erste Schritte in der Selbstständigkeit und im sozialen Bereich. Nebenbei arbeitete ich weiter im Büro und in der Assistenz.</p></div></div><div class="fund"><details class="rv"><summary><span class="zeit mono">02/2025 – 08/2025</span><h3>Persönliche Assistenz<span class="ort">WAG Assistenzgenossenschaft · Hadersdorf am Kamp</span></h3><span class="plus" aria-hidden="true">+</span></summary><div class="mehr"><p>Ich begleitete Menschen im beruflichen und alltäglichen Umfeld und unterstützte bei organisatorischen und administrativen Aufgaben, damit ihr Arbeitsalltag selbstbestimmt, strukturiert und verlässlich bleibt.</p></div></details><details class="rv"><summary><span class="zeit mono">08/2024 – 12/2024</span><h3>Assistenz der Geschäftsführung<span class="ort">Brandner Hygiene · Droß</span></h3><span class="plus" aria-hidden="true">+</span></summary><div class="mehr"><p>Ich unterstützte die Geschäftsführung im täglichen Büro- und Organisationsbetrieb, von der Auftragsabwicklung bis zum Versand.</p><ul><li>Aufträge, Bestellungen, Lieferscheine und Rechnungen in BizSoft</li><li>Versandvorbereitung mit GLS-Etikettendrucker und Etikettenportal</li><li>Kundenkommunikation und Pflege interner Unterlagen</li></ul></div></details><details class="rv"><summary><span class="zeit mono">07/2024 – 08/2025</span><h3>Studienberechtigungsprüfung<span class="ort">VHS Ottakring · Universität Wien</span></h3><span class="plus" aria-hidden="true">+</span></summary><div class="mehr"><p>Studienberechtigung mit naturwissenschaftlichem Schwerpunkt für das Studium der Landschaftsplanung und Landschaftsarchitektur.</p><ul><li>Prüfungsfächer: Aufsatz, Mathematik, Englisch, Biologie und Umweltkunde, Physik</li></ul></div></details><details class="rv"><summary><span class="zeit mono">07/2022 – 06/2024</span><h3>Neuorientierung und Planung der Selbstständigkeit</h3><span class="plus" aria-hidden="true">+</span></summary><div class="mehr"><p>Ich analysierte meine Stärken und beruflichen Perspektiven, plante den Weg zur Studienberechtigung und entwickelte erste Geschäfts- und Vermarktungskonzepte.</p><ul><li>Praktika und Schnuppertage im sozialen Bereich, darunter ein einmonatiges Praktikum im Jugendzentrum See You in Krems (2023)</li><li>Marktanalysen und Konzeption neuer Produkte</li><li>Aufbau digitaler Kommunikationskanäle</li></ul></div></details></div></div></section><section class="horizont b" id="technik" data-h="B-Horizont" data-lo="30" data-hi="80" aria-labelledby="technik-t"><div class="wrap"><div class="hz-kopf rv"><span class="hz-buchstabe" aria-hidden="true">B</span><div><p class="mono">Unterboden · 30 – 80 cm · 2013 – 2022</p><h2 id="technik-t">Technik und Industrie</h2><p class="hz-text">Mit einer Fachausbildung in Elektro- und Metalltechnik wechselte ich in die Industrie: Montage, Instandhaltung, Rohrlaser im Schichtbetrieb, zuletzt Reinräume der Pharmaindustrie. Genauigkeit, Dokumentation und Teamkoordination wurden zum Alltag.</p></div></div><div class="fund"><details class="rv"><summary><span class="zeit mono">03/2022 – 06/2022</span><h3>Produktionsmitarbeiter<span class="ort">Exterstahl · Krems an der Donau</span></h3><span class="plus" aria-hidden="true">+</span></summary><div class="mehr"><p>Kommissionierung von Bauteilen und Werkzeugen, Qualitätskontrollen und Datenerfassung in SAP.</p></div></details><details class="rv"><summary><span class="zeit mono">01/2022 – 02/2022</span><h3>Reinraumtechniker<span class="ort">ECOS · Kirchberg am Wagram und Basel (CH)</span></h3><span class="plus" aria-hidden="true">+</span></summary><div class="mehr"><p>Montage und Instandhaltung in Reinräumen der Pharmaindustrie unter hohen Hygiene-, Sicherheits- und Qualitätsstandards, mit Projekteinsatz in der Schweiz.</p></div></details><details class="rv"><summary><span class="zeit mono">06/2018 – 02/2021</span><h3>Maschinenführer und Teamsprecher Trumpf-Rohrlaser<span class="ort">voestalpine · Krems an der Donau</span></h3><span class="plus" aria-hidden="true">+</span></summary><div class="mehr"><p>Ich richtete Rohrlaseranlagen ein, bediente sie und überwachte den Produktionsprozess. Als Teamsprecher koordinierte ich das Anlagenteam im Schichtbetrieb und war zentrale Ansprechperson für technische und organisatorische Fragen.</p><ul><li>Qualitätskontrollen mit einer 3D-Messmaschine</li><li>Dokumentation technischer Abläufe und Messergebnisse</li><li>Trumpf-Schulungen für Laserschutz und Laserprogrammierung</li></ul></div></details><details class="rv"><summary><span class="zeit mono">09/2015 – 05/2018</span><h3>Instandhaltungstechniker und Montagearbeiter<span class="ort">Bilfinger Personalmanagement · Krems an der Donau</span></h3><span class="plus" aria-hidden="true">+</span></summary><div class="mehr"><p>Montage- und Instandhaltungsarbeiten unter realen Industriebedingungen; dazu die Kommissionierung von Bauteilen und Werkzeugen für gezielte Werkseinsätze.</p><ul><li>Einsatzorte unter anderem: ATC Metallwelt St. Pölten, Kiesunion Grafenwörth, Bauschutz Absdorf, Chemserv Krems und voestalpine Krems</li></ul></div></details><details class="rv"><summary><span class="zeit mono">01/2013 – 04/2015</span><h3>Ausbildung Elektro- und Metalltechnik<span class="ort">WIFI Technikcenter · St. Pölten</span></h3><span class="plus" aria-hidden="true">+</span></summary><div class="mehr"><p>Fachausbildung in Gebäude- und Automatisierungstechnik, abgeschlossen mit der KNX-Zertifizierung.</p></div></details></div></div></section><section class="horizont c" id="handel" data-h="C-Horizont" data-lo="80" data-hi="130" aria-labelledby="handel-t"><div class="wrap"><div class="hz-kopf rv"><span class="hz-buchstabe" aria-hidden="true">C</span><div><p class="mono">Ausgangsgestein · ab 80 cm · 2003 – 2012</p><h2 id="handel-t">Handel und Führung</h2><p class="hz-text">Im Lebensmittelhandel habe ich gelernt, Verantwortung zu übernehmen: für Ware, für Abläufe und für Menschen, vom Lehrling bis zum Marktleiterstellvertreter.</p></div></div><div class="fund"><details class="rv"><summary><span class="zeit mono">01/2011 – 04/2012</span><h3>Einzelhandelskaufmann und Marktleiterstellvertreter<span class="ort">SPAR AG · Mautern an der Donau</span></h3><span class="plus" aria-hidden="true">+</span></summary><div class="mehr"><p>Ich führte Mitarbeitende, organisierte Abläufe im Marktbetrieb, plante Arbeitsabläufe und Personaleinsatz und sicherte Verkaufs- und Qualitätsstandards.</p><ul><li>Führungskräftelehrgang</li><li>Betriebsorganisationsseminar</li><li>Arbeitsrecht- und SAP-Schulung</li></ul></div></details><details class="rv"><summary><span class="zeit mono">04/2007 – 06/2010</span><h3>Einzelhandelskaufmann<span class="ort">SPAR AG · Krems an der Donau</span></h3><span class="plus" aria-hidden="true">+</span></summary><div class="mehr"><p>Ich übernahm Waren, kontrollierte Frische und Sauberkeit und verantwortete die Obst- und Gemüseabteilung. Hygiene- und HACCP-Vorschriften setzte ich zuverlässig um.</p><ul><li>Nachwuchsführungskräftelehrgang und weitere fachliche Seminare</li></ul></div></details><details class="rv"><summary><span class="zeit mono">09/2003 – 08/2006</span><h3>Lehre zum Einzelhandelskaufmann<span class="ort">SPAR AG · Krems an der Donau</span></h3><span class="plus" aria-hidden="true">+</span></summary><div class="mehr"><p>Kaufmännische Ausbildung im Lebensmittelhandel, abgeschlossen mit der Lehrabschlussprüfung.</p></div></details><details class="rv"><summary><span class="zeit mono">1994 – 2003</span><h3>Schulbildung<span class="ort">Langenlois</span></h3><span class="plus" aria-hidden="true">+</span></summary><div class="mehr"><p>Volksschule (1994–1998), Hauptschule (1998–2002) und Polytechnische Schule (2002–2003).</p></div></details></div></div></section>
+<section class="wurzel" id="kann"><div class="wrap">
+  <h2 class="rv">Was ich mitbringe.</h2><div class="kann"><div class="rv"><h3>Garten und Pflanzen</h3><ul><li>Gehölzschnitt an Bäumen, Sträuchern und Hecken</li><li>Rasenpflege</li><li>Obst-, Gemüse- und Kräuteranbau</li><li>Motorsäge, Heckenschere, Hand- und Elektrogeräte</li></ul></div><div class="rv"><h3>Technik und Handwerk</h3><ul><li>Elektro- und Gebäudeautomatisierungstechnik, KNX-zertifiziert</li><li>Schweißen mit MIG/MAG-Zertifikat</li><li>Montage und Instandhaltung in Industriebetrieben und Pharma-Reinräumen</li><li>Holz-, Mauer- und Pflasterarbeiten im Eigenprojekt</li></ul></div><div class="rv"><h3>Industrie und Logistik</h3><ul><li>Einrichtung und Bedienung von Laserschneidanlagen, insbesondere Trumpf-Rohrlaser</li><li>Laserprogrammierung und Laserschutz</li><li>Qualitätskontrolle mit 3D-Messmaschine</li><li>Kommissionierung, Kranschein und Staplerschein</li></ul></div><div class="rv"><h3>Handel und Büro</h3><ul><li>Einzelhandel bis zur Marktleiterstellvertretung</li><li>Warenpräsentation, Frischekontrolle und HACCP</li><li>Personaleinsatz und Arbeitsplanung</li><li>Auftrags- und Bestellabwicklung in BizSoft</li></ul></div><div class="rv"><h3>Soziales und Betreuung</h3><ul><li>Betreuung und Aktivierung von Bewohner:innen</li><li>Persönliche Assistenz im Arbeits- und Alltagsumfeld</li><li>Organisation von Freizeitaktivitäten und Ausflügen</li><li>Praktikum in der offenen Jugendarbeit</li></ul></div></div>
+  <ul class="chips" aria-label="Zertifikate"><li>Kranschein</li><li>Staplerschein</li><li>Führerschein B</li><li>KNX-Zertifizierung</li><li>Schweißzertifikat MIG/MAG</li><li>Erste Hilfe für psychische Krisen</li></ul>
+</div></section>
+<section class="kontakt" id="kontakt"><div class="wrap rv">
+  <p class="mono" style="opacity:.7;margin-bottom:14px">Kontakt</p>
+  <a class="mail" href="mailto:amondaniel@live.at">amondaniel@live.at</a><p>Gobelsburg, Niederösterreich · Stand November 2026</p>
+</div></section>
+</main>
+<div class="tiefe mono" aria-hidden="true"><b id="tiefe-h">Oberfläche</b><span id="tiefe-zahl">0 cm</span></div><nav class="wechsler" aria-label="Varianten wechseln"><a href="../1-boden/index.html" data-n="1" title="Variante 1: Bodenprofil" aria-current="page">1</a><a href="../2-vollbild/index.html" data-n="2" title="Variante 2: Vollbild">2</a><a href="../3-herbarium/index.html" data-n="3" title="Variante 3: Herbarium">3</a><a href="../4-plan/index.html" data-n="4" title="Variante 4: Plansatz">4</a><a class="ue" href="../index.html">Übersicht</a></nav>
+<script>
+
+(function(){
+  var els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){els.forEach(function(x){x.classList.add('in')});return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{threshold:.1});
+  els.forEach(function(x){io.observe(x)});
+})();
+
+(function(){
+  var z=document.getElementById('tiefe-zahl'),h=document.getElementById('tiefe-h');
+  var hs=[].slice.call(document.querySelectorAll('.horizont'));
+  function tick(){
+    var cur=null,y=innerHeight*0.5;
+    hs.forEach(function(x){if(x.getBoundingClientRect().top<y)cur=x});
+    if(!cur){z.textContent='0 cm';h.textContent='Oberfläche';return}
+    var r=cur.getBoundingClientRect(),lo=+cur.dataset.lo,hi=+cur.dataset.hi;
+    var p=Math.max(0,Math.min(1,(y-r.top)/r.height));
+    z.textContent=Math.round(lo+(hi-lo)*p)+' cm';h.textContent=cur.dataset.h;
+  }
+  addEventListener('scroll',tick,{passive:true});addEventListener('resize',tick);tick();
+})();
+
+(function(){var f=null;try{f=localStorage.getItem('variante-favorit')}catch(e){}
+if(f){var a=document.querySelector('.wechsler a[data-n="'+f+'"]');if(a)a.classList.add('fav')}})();
+
+</script>
+</body>
+</html>
